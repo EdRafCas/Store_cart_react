@@ -7,8 +7,8 @@ const ContainerHeader = styled.div`
     padding: 0; /* 40px */
     display: flex;
     flex-direction:column;
-    justify-content: space-between;
     border: 2px solid black;
+    flex-grow:1;
     position:absolute;
     top:0px;
     
@@ -35,11 +35,29 @@ const UpHeader = styled.div`
       display:flex;
       justify-content: space-between;
       height:auto;
+      display:grid;
+      align-items:center;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
 `
 const MainLogo = styled.img`
       width:13.375rem;
       margin: 1rem 0;
 
+`
+const LoginBar = styled.div`
+      width:auto;
+      height:auto;
+      text-align:right;
+`
+const SearchBox =styled.div`
+      width:auto;
+      height:auto;
+      display:block;
+      flex-direction:row;
+      align-content:flex-end;
+      min-height:20px;
+      float:left;
 `
 
 
@@ -47,9 +65,16 @@ const Header = () => {
       return ( 
             <ContainerHeader>
                   <UpHeader>
-                        <div>Hola1</div>
+                        <SearchBox>
+                             <h1>Buscar</h1>
+                        </SearchBox> 
                         <MainLogo src={Logo} />
-                        <div>Hola3</div>  
+                        <LoginBar>
+                              <a href="/#">Crear cuenta </a>
+                              <a href="/#">Iniciar sesion </a>
+                              <a href="/#"># </a>
+                              
+                        </LoginBar>  
                   </UpHeader>
                   
                   <NavBar>
