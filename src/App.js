@@ -1,8 +1,20 @@
+import React from 'react';
+import SliderCarousel from './Elements/SliderCarousel'
+
+import styled from "styled-components";
+
+const ContainerCarousel = styled.div`
+ div{
+   overflow:hidden;
+ }
+`
+
 const App = () => {
   return ( 
-    <div>
-      <h1>Prueba</h1>
-    </div>
+    <ContainerCarousel>
+      <SliderCarousel/>
+    </ContainerCarousel>
+    
    );
 }
  
