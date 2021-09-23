@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import styled from 'styled-components';
 import WebFont from 'webfontloader';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Container from './Components/Container';
@@ -17,19 +18,30 @@ WebFont.load({
   }
 });
 
+const ContainerPages = styled.div`
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  align-items:center;
+
+`
+
 const Index = () => {
   return ( 
-    <Container>
+    <Container className="alo">
       <BrowserRouter>
         <Header/>
-      
-        <Switch>
-          <Route path="/Colection" exact={true} component={Colection}/> 
-          <Route path="/Contact" exact={true} component={Contact}/> 
-          <Route path="/Info" exact={true} component={Info}/> 
-          <Route path="/" exact={true} component={App}/>
-          <App to="/"/>
-        </Switch>
+        <ContainerPages >
+          <Switch>
+            <Route path="/Colection" exact={true} component={Colection}/> 
+            <Route path="/Contact" exact={true} component={Contact}/> 
+            <Route path="/Info" exact={true} component={Info}/> 
+            <Route path="/" exact={true} component={App}/>
+            <App to="/"/>
+          </Switch>
+        </ContainerPages>
+        
       
       </BrowserRouter>
       

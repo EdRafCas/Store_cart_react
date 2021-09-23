@@ -15,18 +15,18 @@ import slide3 from './../img/front-page-3.png';
 const items = [
   {
     src: slide1,
-    altText: 'Slide 1',
-    caption: 'Slide 1'
+    altText: '',
+    caption: ''
   },
   {
     src: slide2,
-    altText: 'Slide 2',
-    caption: 'Slide 2'
+    altText: '',
+    caption: ''
   },
   {
     src: slide3,
-    altText: 'Slide 3',
-    caption: 'Slide 3'
+    altText: '',
+    caption: ''
   }
 ];
 
@@ -57,8 +57,9 @@ const SliderCarousel = (props) => {
         onExiting={() => setAnimating(true)}
         onExited={() => setAnimating(false)}
         key={item.src}
+        overflow="hidden"
       >
-        <img src={item.src} alt={item.altText} width="100%" height="504px" />
+        <img src={item.src} alt={item.altText} width="100%" height="auto" />
         <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
       </CarouselItem>
     );
@@ -73,8 +74,8 @@ const SliderCarousel = (props) => {
     >
       <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={goToIndex} />
       {slides}
-      <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
-      <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
+      <CarouselControl direction="prev" directionText="" onClickHandler={previous} />
+      <CarouselControl direction="next" directionText="" onClickHandler={next} />
     </Carousel>
   );
 }

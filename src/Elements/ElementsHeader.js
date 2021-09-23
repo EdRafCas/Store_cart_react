@@ -6,10 +6,11 @@ const ContainerHeader = styled.div`
     padding: 0;
     display: flex;
     flex-direction:column;
-    border: 0px ;
-    flex-grow:1;
-    position:absolute;
-    top:0px;
+    gap:0;
+    
+    justify-content:flex-start;
+    margin:0px;
+    
     
 `;
 
@@ -18,7 +19,9 @@ const NavBar = styled.div`
       background:black;
       margin:auto;
       display:flex;
-      justify-content: center;
+      flex-direction:row;
+      justify-content:center;
+      margin:0;
       a{    
             text-decoration:none;
       }
@@ -37,12 +40,12 @@ const NavBarButtom =styled(Link)`
 
 const UpHeader = styled.div`
       width:100%;
-      margin:auto;
+      margin-top:0px;
       display:flex;
-      justify-content: space-between;
+      justify-content: flex-start;
       height:200px;
       display:grid;
-      align-items:center;
+
       grid-template-columns: repeat(3, 1fr);
       gap: 0;
 `
@@ -56,7 +59,14 @@ const MainLogo = styled.img`
 const LoginBar = styled.div`
       width:auto;
       height:auto;
+      margin:auto;
       text-align:right;
+      display:flex;
+      flex-direction:row;
+      align-items:flex-start;
+      justify-content:center;
+      
+      
       a{    
             font-size:10px;
             text-decoration:none;
@@ -79,8 +89,8 @@ const LoginBarButtomcart =styled.a`
       display:inline-block;
       color:#000000;
       width:48.25px; /* placeholder */
-      margin:5px 0px;
-      padding: 4px 8px;
+      margin-right:5px;
+      
       
 `
 const CartSpan = styled.span`
@@ -94,9 +104,9 @@ const CartSpan = styled.span`
 const SearchBox =styled.div`
       width:auto;
       height:auto;
-      display:block;
-      flex-direction:row;
-      align-content:flex-end;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
       min-height:20px;
       float:left;
 `
