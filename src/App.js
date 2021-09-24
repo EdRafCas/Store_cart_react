@@ -1,5 +1,7 @@
 import React from 'react';
 import SliderCarousel from './Elements/SliderCarousel'
+import Banner from './Elements/Banner';
+import WebBanner from './Elements/WebBanner';
 
 import styled from "styled-components";
 
@@ -24,8 +26,11 @@ const App = () => {
       <ContainerCarousel>
         <SliderCarousel/>
       </ContainerCarousel>
-      <h1>Hello</h1>
+      <Banner/>
+      <WebBanner/>
+      
     </MainPage>
+    
     
     
    );
