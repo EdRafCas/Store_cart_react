@@ -8,7 +8,7 @@ const ContainerWebBanner = styled.div`
       align-items:center;
       width:100%;
       margin:0px;
-      padding:0px;
+      padding-bottom:100px;
       
       p{
             text-transform: uppercase;

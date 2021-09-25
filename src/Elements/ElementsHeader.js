@@ -59,12 +59,12 @@ const MainLogo = styled.img`
 const LoginBar = styled.div`
       width:auto;
       height:auto;
-      margin:auto;
-      text-align:right;
       display:flex;
       flex-direction:row;
-      align-items:flex-start;
-      justify-content:center;
+      align-items:center;
+      justify-content:flex-end;
+      margin:0;
+      float:right;
       
       
       a{    
@@ -107,8 +107,9 @@ const SearchBox =styled.div`
       display:flex;
       flex-direction:column;
       justify-content:center;
-      min-height:20px;
       float:left;
+      min-height:20px;
+      
 `
 
 
