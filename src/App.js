@@ -2,7 +2,7 @@ import React from 'react';
 import SliderCarousel from './Elements/SliderCarousel'
 import Banner from './Elements/Banner';
 import WebBanner from './Elements/WebBanner';
-import Colection from './Components/Colection'
+import ProductGallery from './Components/ProductGallery';
 
 import styled from "styled-components";
 
@@ -29,7 +29,7 @@ const App = () => {
       </ContainerCarousel>
       <Banner/>
       <WebBanner/>
-      <Colection/>
+      <ProductGallery/>
     </MainPage>
     
     
