@@ -10,6 +10,7 @@ import App from './App';
 import Colection from './Components/Colection';
 import Contact from './Components/Contact';
 import Info from './Components/Info';
+import Cart from './Components/Cart';
 
 
 WebFont.load({
@@ -36,8 +37,10 @@ const Index = () => {
           <Switch>
             <Route path="/Colection" exact={true} component={Colection}/> 
             <Route path="/Contact" exact={true} component={Contact}/> 
-            <Route path="/Info" exact={true} component={Info}/> 
+            <Route path="/Info" exact={true} component={Info}/>
+            <Route path="/Cart" exact={true} component={Cart}/> 
             <Route path="/" exact={true} component={App}/>
+            
             <App to="/"/>
           </Switch>
         </ContainerPages>
