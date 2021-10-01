@@ -1,12 +1,12 @@
-
 import styled from "styled-components";
+import GalleryProducts from "../Elements/ProductList";
+import {ReactComponent as LogoTrash} from "../img/trash-icon.svg"
 
 const CartShopContainer= styled.div`
       width:100%;
       height: auto;
       display:flex;
       flex-direction:column;
-      font-family:"Montserrat", Sans-serif;
       padding:5px;
 `
 const Headline=styled.div`
@@ -40,22 +40,25 @@ const CartProductContainer =styled.div`
       display: grid;
       gap:20px;
       grid-template-columns: 4fr 1fr;
-
-
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      padding:10px 0px;
+      line-height:20px;
 `
 
 const LeftColumn=styled.div`
       display: grid;
       gap:20px;
-      grid-template-columns: 1fr 2fr;
+      grid-template-columns: 1fr 3fr;
 `
 const RightColumn=styled.div`
       display: grid;
       gap:20px;
-      grid-template-columns: 2fr 1fr;;
+      grid-template-columns: 7fr 1fr;
+      grid-template-rows: 40px;
+
 `
 const ImageContainer=styled.div`
-
+      
       `
 
 const DescriptionContainer = styled.div`
@@ -67,7 +70,10 @@ const DescriptionContainer = styled.div`
 
 const ProductName=styled.div`
 
-      a{
+      a{ 
+      text-decoration:none;
+      color:#000;
+      font-size:16px;
 
       }
 `
@@ -75,27 +81,46 @@ const ProductPrice=styled.div`
 
 `
 const ProductCuantity=styled.div`
-display:flex;
-flex-direction:row;
-justify-content:flex-start;
-gap:10px;
+      display:flex;
+      flex-direction:row;
+      justify-content:flex-start;
 
 
 `
 const ReduceButton =styled.div`
-
+      padding:0px 5px;
+      border:solid 1px black;
 `
 const AmountToBuy=styled.div`
-
+      padding:0px 10px;
+      border:solid 1px black;
 `
 
 const IncreaseButton=styled.div`
-
+      padding:0px 5px;
+      border:solid 1px black;
 `
 const SubtotalPrice=styled.div`
+      display:flex;
+      flex-direction:row;
+      justify-content:flex-end;
+      align-items:right;
+      font-size:16px;
 `
+const ContainerIcon=styled.div`
+      height:20px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-start;
+      height:auto;
+      
 
-const RemovefromCart=styled.div`
+`
+const RemovefromCart=styled(LogoTrash)`
+      height:50%;
+      width:auto;
+      min-height:20px
+
 `
 
 
@@ -111,11 +136,11 @@ const Cart = () => {
                         <CartProductContainer>
                               <LeftColumn>
                                     <ImageContainer>
-                                    IMAGEN
+                                    <img src={GalleryProducts[0].src} alt={GalleryProducts[0].alt} width="100%" height="auto" /> 
                                     </ImageContainer>
                                     <DescriptionContainer>
-                                          <ProductName>Hello</ProductName>
-                                          <ProductPrice>5200</ProductPrice>
+                                          <ProductName> <a href="/#">{GalleryProducts[0].name}</a></ProductName>
+                                          <ProductPrice>${GalleryProducts[0].price}</ProductPrice>
                                           <ProductCuantity>
                                                 <ReduceButton>-</ReduceButton>
                                                 <AmountToBuy>1</AmountToBuy>
@@ -124,8 +149,9 @@ const Cart = () => {
                                     </DescriptionContainer>
                               </LeftColumn>
                               <RightColumn>
-                                    <SubtotalPrice>5200</SubtotalPrice>
-                                    <RemovefromCart>x</RemovefromCart>
+                                    <SubtotalPrice>${GalleryProducts[0].price}</SubtotalPrice>
+                                    <ContainerIcon><RemovefromCart viewBox="0 0 875 1000"/></ContainerIcon>
+                                    
                               </RightColumn>
                               
                               

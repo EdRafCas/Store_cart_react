@@ -2,6 +2,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Montserrat", Sans-serif;
+  font-size: 14px;
 }
 
 body {
@@ -10,7 +12,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "Montserrat", Sans-serif;
 }
 
 :root {
