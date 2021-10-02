@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import React,{useState} from 'react';
 import GalleryProducts from "../Elements/ProductList";
 import {ReactComponent as LogoTrash} from "../img/trash-icon.svg"
 
@@ -58,13 +59,13 @@ const RightColumn=styled.div`
 
 `
 const ImageContainer=styled.div`
-      
+      padding: 5px;
       `
 
 const DescriptionContainer = styled.div`
       display:flex;
       flex-direction:column;
-
+      gap:10px;
 
 `
 
@@ -87,7 +88,7 @@ const ProductCuantity=styled.div`
 
 
 `
-const ReduceButton =styled.div`
+const ReduceButton =styled.button`
       padding:0px 5px;
       border:solid 1px black;
 `
@@ -96,7 +97,7 @@ const AmountToBuy=styled.div`
       border:solid 1px black;
 `
 
-const IncreaseButton=styled.div`
+const IncreaseButton=styled.button`
       padding:0px 5px;
       border:solid 1px black;
 `
@@ -119,12 +120,19 @@ const ContainerIcon=styled.div`
 const RemovefromCart=styled(LogoTrash)`
       height:50%;
       width:auto;
-      min-height:20px
+      min-height:20px;
 
 `
 
 
+
 const Cart = () => {
+      
+const [cart, changeCart] = useState([]);
+const [amountProduct, changeAmountProduct] = useState(1);
+
+var subtotalPrices = Number(amountProduct*GalleryProducts[0].price).toFixed(2);
+
       return ( 
             <CartShopContainer>
                   <Title>Cart</Title>
@@ -142,14 +150,14 @@ const Cart = () => {
                                           <ProductName> <a href="/#">{GalleryProducts[0].name}</a></ProductName>
                                           <ProductPrice>${GalleryProducts[0].price}</ProductPrice>
                                           <ProductCuantity>
-                                                <ReduceButton>-</ReduceButton>
-                                                <AmountToBuy>1</AmountToBuy>
-                                                <IncreaseButton>+</IncreaseButton>
+                                                <ReduceButton onClick={()=> changeAmountProduct(amountProduct-1)}>-</ReduceButton>
+                                                <AmountToBuy>{amountProduct}</AmountToBuy>
+                                                <IncreaseButton onClick={()=> changeAmountProduct(amountProduct+1)}>+</IncreaseButton>
                                           </ProductCuantity>
                                     </DescriptionContainer>
                               </LeftColumn>
                               <RightColumn>
-                                    <SubtotalPrice>${GalleryProducts[0].price}</SubtotalPrice>
+                                    <SubtotalPrice>${subtotalPrices}</SubtotalPrice>
                                     <ContainerIcon><RemovefromCart viewBox="0 0 875 1000"/></ContainerIcon>
                                     
                               </RightColumn>
