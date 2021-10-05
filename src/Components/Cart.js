@@ -131,6 +131,13 @@ const Cart = () => {
 const [cart, changeCart] = useState([]);
 const [amountProduct, changeAmountProduct] = useState(1);
 
+const modifyAmount = (e) => {
+      if(e.target.name==="Increase" && amountProduct >=1) {
+            changeAmountProduct(amountProduct +1)}
+      if(e.target.name==="Reduce" && amountProduct >=2) {
+            changeAmountProduct(amountProduct -1)}
+      }
+
 var subtotalPrices = Number(amountProduct*GalleryProducts[0].price).toFixed(2);
 
       return ( 
@@ -150,9 +157,9 @@ var subtotalPrices = Number(amountProduct*GalleryProducts[0].price).toFixed(2);
                                           <ProductName> <a href="/#">{GalleryProducts[0].name}</a></ProductName>
                                           <ProductPrice>${GalleryProducts[0].price}</ProductPrice>
                                           <ProductCuantity>
-                                                <ReduceButton onClick={()=> changeAmountProduct(amountProduct-1)}>-</ReduceButton>
+                                                <ReduceButton name="Reduce" onClick={modifyAmount}>-</ReduceButton>
                                                 <AmountToBuy>{amountProduct}</AmountToBuy>
-                                                <IncreaseButton onClick={()=> changeAmountProduct(amountProduct+1)}>+</IncreaseButton>
+                                                <IncreaseButton name="Increase" onClick={modifyAmount}>+</IncreaseButton>
                                           </ProductCuantity>
                                     </DescriptionContainer>
                               </LeftColumn>

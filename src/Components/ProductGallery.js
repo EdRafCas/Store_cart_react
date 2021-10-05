@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import GalleryProducts from '../Elements/ProductList';
 
@@ -17,7 +18,7 @@ const ProductContainer = styled.div`
 `
 const ContainerImage = styled.a`
 `
-const LinkName =styled.a`
+const LinkName =styled(Link)`
       margin:5px;
       display:block;
       text-align:center;
@@ -72,7 +73,7 @@ const ProductGallery = () => {
                                     <ContainerImage>
                                           <img src={products.src} alt={products.altText} width="100%" height="auto" />      
                                     </ContainerImage>
-                                    <LinkName>
+                                    <LinkName to={`/Colection/Product/${products.id}`}>
                                           {products.name}
                                     </LinkName>
                                     <PaymentsContainer>
