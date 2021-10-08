@@ -1,6 +1,6 @@
 import {useParams, Link} from  'react-router-dom';
 import styled from 'styled-components';
-import GalleryProducts from './../Elements/ProductList';
+import ProductList from './../Elements/ProductList';
 import Product1 from './../img/product-1.jpg';
 
 const ContainerProductPage=styled.div`
@@ -80,7 +80,7 @@ const ShoppingOrder=styled.div`
 `
 
 const ProductName =styled.h1`
-      margin:5px;
+      margin:15px;
       display:block;
       text-align:left;
       font-size:24px;
@@ -94,6 +94,7 @@ const CashPriceContainer =styled.div`
       display:flex;
       flex-direction:row;
       justify-content:flex-start;
+      margin-left:10px;
       font-size:16px;
       align-items:center;
 `
@@ -113,54 +114,88 @@ const CurrentPrice =styled.span`
       background:#000;
       color:#fff;
 `
+const PaymentMethodsContainer=styled.div`
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-start;
+`
+const CuotesPayment = styled.div`
 
- /*  {GalleryProducts[id-1] ?
-                  <div>
-                        <h1>{GalleryProducts[id-1].name}</h1>
-                        <h1>{GalleryProducts[id-1].price}</h1>
-                  </div>
-                  :
-                  ""
-                  } */
+      width:auto;
+      border: 1px solid rgba(27, 27, 27, 0.3);
+      text-align:center;
+      font-size:13px;
+      padding: 5px 10px;
+      margin-top:30px;
+      margin-bottom: 5px;   
+`
+const AddToCartButton=styled.button`
+      display:block;
+      padding: 9px 12px;
+      background:#000;
+      color:#fff;
+      font-weight:400;
+      font-size:18px;
+
+`
                   
 const Product = (props) => {
-      const {id} =useParams();
-      
+      const {nametag} =useParams();
+      var filteredTagName = ProductList.filter(function(items) {
+            return items.nametag === nametag
+      });
+
+      /* console.log(nametag);
+      console.log(ProductList);
+      console.log(filteredTagName); */
 
       return ( 
-            <ContainerProductPage>
-                  <DirectionProduct>
-                        <RedirectButtom to="/"> Main</RedirectButtom> 
-                        <Separator>/</Separator> 
-                        <RedirectButtom>Colection</RedirectButtom>
-                        <Separator>/</Separator> 
-                  </DirectionProduct>
-                  <InnerContainer>
-                        <ProductDisplay>
-                              <SmallPhotos>
-                                    <img alt="" src={Product1}></img>
-                                    <img alt="" src={Product1}></img>
-                                    <img alt="" src={Product1}></img>
-                                    
-                                    
-                              </SmallPhotos>
-                              <BigPhoto>
-                                    <img src={Product1}></img>
-                              </BigPhoto>
-                        </ProductDisplay>
-                        <ShoppingOrder>
-                              <ProductName>Producto</ProductName>
-                              <CashPriceContainer>
-                                    <PreviousPrice>$1500,00</PreviousPrice>
-                                    <CurrentPrice>$2500,00</CurrentPrice>
-                              </CashPriceContainer>
-                        </ShoppingOrder>
-                  </InnerContainer>
+      <>
+            { filteredTagName ?
+                  <ContainerProductPage>
+                        <DirectionProduct>
+                              <RedirectButtom to="/"> Main</RedirectButtom> 
+                              <Separator>/</Separator> 
+                              <RedirectButtom to="/Colection"> Colection</RedirectButtom>
+                              <Separator>/</Separator> 
+                        </DirectionProduct>
+                        <InnerContainer>
+                              <ProductDisplay>
+                                    <SmallPhotos>
+                                          <img alt="" src={filteredTagName[0].src}></img>
+                                          <img alt="" src={filteredTagName[0].src}></img>
+                                          <img alt="" src={filteredTagName[0].src}></img>
+                                          
+                                    </SmallPhotos>
+                                    <BigPhoto>
+                                          <img src={filteredTagName[0].src}></img>
+                                    </BigPhoto>
+                              </ProductDisplay>
+                              <ShoppingOrder>
+                                    <ProductName>{filteredTagName[0].name}</ProductName>
+                                    <CashPriceContainer>
+                                          {filteredTagName[0].oldPrice ?
+                                                <PreviousPrice>{filteredTagName[0].oldPrice}</PreviousPrice>
+                                          :
+                                          ""
+                                          }
+                                          <CurrentPrice>${filteredTagName[0].price}</CurrentPrice>
+                                    </CashPriceContainer>
+                                    <PaymentMethodsContainer>
+                                          <CuotesPayment>
+                                                <p> <b>6</b> payments of <b>${filteredTagName[0].sharePrice}</b>  with no interest</p>
+                                          </CuotesPayment>
+                                    </PaymentMethodsContainer>    
+                                    <AddToCartButton>ADD TO CART</AddToCartButton>
+                              </ShoppingOrder>
+                        </InnerContainer>
 
 
-            </ContainerProductPage>
-                
-           
+                  </ContainerProductPage>
+            :
+            ""
+            }
+      </>   
        );
 }
  

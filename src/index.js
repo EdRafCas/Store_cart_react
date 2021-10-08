@@ -37,7 +37,7 @@ const Index = () => {
         <ContainerPages >
           <Switch>
             <Route path="/Colection" exact={true} component={Colection}/> 
-            <Route path="/Colection/Product/:id" exact={true} component={Product}/> 
+            <Route path="/Colection/Product/:nametag" exact={true} component={Product}/> 
             <Route path="/Contact" exact={true} component={Contact}/> 
             <Route path="/Info" exact={true} component={Info}/>
             <Route path="/Cart" exact={true} component={Cart}/> 

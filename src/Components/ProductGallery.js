@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
-import GalleryProducts from '../Elements/ProductList';
+import ProductList from '../Elements/ProductList';
 
 const GalleryContainer = styled.div`
       width: 100%;
@@ -57,26 +57,25 @@ const CuotesPayment = styled.div`
       text-align:center;
       font-size:13px;
       padding: 5px 10px;
-      margin-bottom: 5px;
-      
+      margin-bottom: 5px;   
 `
 
 const ProductGallery = () => {
       return ( 
             <GalleryContainer>
-                  {GalleryProducts.map((products, index)=>{
+                  {ProductList.map((products, index)=>{
                         return(
                               <ProductContainer key={index}>
                                     <ContainerImage>
                                           <img src={products.src} alt={products.altText} width="100%" height="auto" />      
                                     </ContainerImage>
-                                    <LinkName to={`/Colection/Product/${products.id}`}>
+                                    <LinkName to={`/Colection/Product/${products.nametag}`}>
                                           {products.name}
                                     </LinkName>
                                     <PaymentsContainer>
                                           <CashPriceContainer>
-                                          {products.oldprice ?
-                                          <PreviousPrice> {products.oldprice} </PreviousPrice>
+                                          {products.oldPrice ?
+                                          <PreviousPrice> {products.oldPrice} </PreviousPrice>
                                           :""}
                                           <CurrentPrice>${products.price}</CurrentPrice>
                                           </CashPriceContainer>
