@@ -12,6 +12,7 @@ import Contact from './Components/Contact';
 import Info from './Components/Info';
 import Cart from './Components/Cart';
 import Product from './Components/Product';
+import {CartShopProvider} from './../src/Context/ShoppingCartContext'
 
 
 WebFont.load({
@@ -32,23 +33,24 @@ const ContainerPages = styled.div`
 const Index = () => {
   return ( 
     <Container >
-      <BrowserRouter>
-        <Header/>
-        <ContainerPages >
-          <Switch>
-            <Route path="/Colection" exact={true} component={Colection}/> 
-            <Route path="/Colection/Product/:nametag" exact={true} component={Product}/> 
-            <Route path="/Contact" exact={true} component={Contact}/> 
-            <Route path="/Info" exact={true} component={Info}/>
-            <Route path="/Cart" exact={true} component={Cart}/> 
-            <Route path="/" exact={true} component={App}/>
-            
-            <App to="/"/>
-          </Switch>
-        </ContainerPages>
-        
+      <CartShopProvider>
+        <BrowserRouter>
+          <Header/>
+          <ContainerPages >
+            <Switch>
+              <Route path="/Colection" exact={true} component={Colection}/> 
+              <Route path="/Colection/Product/:nametag" exact={true} component={Product}/> 
+              <Route path="/Contact" exact={true} component={Contact}/> 
+              <Route path="/Info" exact={true} component={Info}/>
+              <Route path="/Cart" exact={true} component={Cart}/> 
+              <Route path="/" exact={true} component={App}/>
+              
+              <App to="/"/>
+            </Switch>
+          </ContainerPages>
+        </BrowserRouter>
+      </CartShopProvider>
       
-      </BrowserRouter>
       
     </Container>
       

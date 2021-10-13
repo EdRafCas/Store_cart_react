@@ -1,7 +1,8 @@
+import React,{useContext} from 'react';
 import {useParams, Link} from  'react-router-dom';
 import styled from 'styled-components';
 import ProductList from './../Elements/ProductList';
-import Product1 from './../img/product-1.jpg';
+import {CartIndexContext} from '../Context/ShoppingCartContext';
 
 const ContainerProductPage=styled.div`
       display:flex;
@@ -141,10 +142,11 @@ const AddToCartButton=styled.button`
                   
 const Product = (props) => {
       const {nametag} =useParams();
+      const {addProductToCart} =useContext(CartIndexContext);
       var filteredTagName = ProductList.filter(function(items) {
             return items.nametag === nametag
       });
-
+      
       /* console.log(nametag);
       console.log(ProductList);
       console.log(filteredTagName); */
@@ -168,7 +170,7 @@ const Product = (props) => {
                                           
                                     </SmallPhotos>
                                     <BigPhoto>
-                                          <img src={filteredTagName[0].src}></img>
+                                          <img src={filteredTagName[0].src} alt={filteredTagName[0].name}></img>
                                     </BigPhoto>
                               </ProductDisplay>
                               <ShoppingOrder>
@@ -186,7 +188,13 @@ const Product = (props) => {
                                                 <p> <b>6</b> payments of <b>${filteredTagName[0].sharePrice}</b>  with no interest</p>
                                           </CuotesPayment>
                                     </PaymentMethodsContainer>    
-                                    <AddToCartButton>ADD TO CART</AddToCartButton>
+                                    <AddToCartButton onClick={()=>addProductToCart(
+                                    filteredTagName[0].id,
+                                    filteredTagName[0].name,
+                                    filteredTagName[0].oldPrice,
+                                    filteredTagName[0].price,
+                                    filteredTagName[0].nametag,
+                                    filteredTagName[0].alt)}>ADD TO CART</AddToCartButton>
                               </ShoppingOrder>
                         </InnerContainer>
 

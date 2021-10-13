@@ -85,7 +85,7 @@ const LoginBarButtomRight =styled(Link)`
       width:auto;
       padding:0px 0px 0px 5px;
 `
-const LoginBarButtomcart =styled.a`
+const LoginBarButtomcart =styled(Link)`
       display:inline-block;
       color:#000000;
       width:48.25px; /* placeholder */

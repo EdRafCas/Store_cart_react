@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import React,{useState} from 'react';
+import React,{useContext} from 'react';
 import GalleryProducts from "../Elements/ProductList";
-import {ReactComponent as LogoTrash} from "../img/trash-icon.svg"
+import {ReactComponent as LogoTrash} from "../img/trash-icon.svg";
+import {CartIndexContext} from './../Context/ShoppingCartContext'
 
 const CartShopContainer= styled.div`
       width:100%;
@@ -127,9 +128,9 @@ const RemovefromCart=styled(LogoTrash)`
 
 
 const Cart = () => {
-      
-const [cart, changeCart] = useState([]);
-const [amountProduct, changeAmountProduct] = useState(1);
+const {amountProduct} = useContext(CartIndexContext);
+const {changeAmountProduct} =useContext(CartIndexContext);
+
 
 const modifyAmount = (e) => {
       if(e.target.name==="Increase" && amountProduct >=1) {
@@ -151,7 +152,7 @@ var subtotalPrices = Number(amountProduct*GalleryProducts[0].price).toFixed(2);
                         <CartProductContainer>
                               <LeftColumn>
                                     <ImageContainer>
-                                    <img src={GalleryProducts[0].src} alt={GalleryProducts[0].alt} width="100%" height="auto" /> 
+                                          <img src={GalleryProducts[0].src} alt={GalleryProducts[0].alt} width="100%" height="auto" /> 
                                     </ImageContainer>
                                     <DescriptionContainer>
                                           <ProductName> <a href="/#">{GalleryProducts[0].name}</a></ProductName>
