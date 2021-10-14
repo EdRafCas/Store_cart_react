@@ -190,6 +190,7 @@ const Product = (props) => {
                                     </PaymentMethodsContainer>    
                                     <AddToCartButton onClick={()=>addProductToCart(
                                     filteredTagName[0].id,
+                                    filteredTagName[0].src,
                                     filteredTagName[0].name,
                                     filteredTagName[0].oldPrice,
                                     filteredTagName[0].price,

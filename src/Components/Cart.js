@@ -130,6 +130,9 @@ const RemovefromCart=styled(LogoTrash)`
 const Cart = () => {
 const {amountProduct} = useContext(CartIndexContext);
 const {changeAmountProduct} =useContext(CartIndexContext);
+const {cart} =useContext(CartIndexContext);
+const {addProductToCart} =useContext(CartIndexContext);
+const {reduceProductInCart} =useContext(CartIndexContext);
 
 
 const modifyAmount = (e) => {
@@ -139,7 +142,6 @@ const modifyAmount = (e) => {
             changeAmountProduct(amountProduct -1)}
       }
 
-var subtotalPrices = Number(amountProduct*GalleryProducts[0].price).toFixed(2);
 
       return ( 
             <CartShopContainer>
@@ -149,30 +151,49 @@ var subtotalPrices = Number(amountProduct*GalleryProducts[0].price).toFixed(2);
                         <p>Subtotal</p>
                   </Headline>
                   <ProductsInCart>
-                        <CartProductContainer>
-                              <LeftColumn>
-                                    <ImageContainer>
-                                          <img src={GalleryProducts[0].src} alt={GalleryProducts[0].alt} width="100%" height="auto" /> 
-                                    </ImageContainer>
-                                    <DescriptionContainer>
-                                          <ProductName> <a href="/#">{GalleryProducts[0].name}</a></ProductName>
-                                          <ProductPrice>${GalleryProducts[0].price}</ProductPrice>
-                                          <ProductCuantity>
-                                                <ReduceButton name="Reduce" onClick={modifyAmount}>-</ReduceButton>
-                                                <AmountToBuy>{amountProduct}</AmountToBuy>
-                                                <IncreaseButton name="Increase" onClick={modifyAmount}>+</IncreaseButton>
-                                          </ProductCuantity>
-                                    </DescriptionContainer>
-                              </LeftColumn>
-                              <RightColumn>
-                                    <SubtotalPrice>${subtotalPrices}</SubtotalPrice>
-                                    <ContainerIcon><RemovefromCart viewBox="0 0 875 1000"/></ContainerIcon>
-                                    
-                              </RightColumn>
-                              
-                              
-                              
-                        </CartProductContainer>
+                        {cart.map((productsInCart, index)=>{
+                              return(
+                              <CartProductContainer>
+                                    <LeftColumn>
+                                          <ImageContainer>
+                                                <img src={productsInCart.src} alt={productsInCart.alt} width="100%" height="auto" /> 
+                                          </ImageContainer>
+                                          <DescriptionContainer>
+                                                <ProductName> <a href="/#">{productsInCart.name}</a></ProductName>
+                                                <ProductPrice>${productsInCart.price}</ProductPrice>
+                                                <ProductCuantity>
+                                                      <ReduceButton name="Reduce" onClick={()=>reduceProductInCart(
+                                                                                                productsInCart.id,
+                                                                                                productsInCart.src,
+                                                                                                productsInCart.name,
+                                                                                                productsInCart.oldPrice,
+                                                                                                productsInCart.price,
+                                                                                                productsInCart.nametag,
+                                                                                                productsInCart.alt,
+                                                                                                productsInCart.amount
+                                                                                                )}>-</ReduceButton>
+                                                      <AmountToBuy>{productsInCart.amount}</AmountToBuy>
+                                                      <IncreaseButton name="Increase" onClick={()=>addProductToCart(
+                                                                                                productsInCart.id,
+                                                                                                productsInCart.src,
+                                                                                                productsInCart.name,
+                                                                                                productsInCart.oldPrice,
+                                                                                                productsInCart.price,
+                                                                                                productsInCart.nametag,
+                                                                                                productsInCart.alt)}>+</IncreaseButton>
+                                                </ProductCuantity>
+                                          </DescriptionContainer>
+                                    </LeftColumn>
+                                    <RightColumn>
+                                          <SubtotalPrice>${
+                                          Number(productsInCart.amount*productsInCart.price).toFixed(2)
+                                          }</SubtotalPrice>
+                                          <ContainerIcon><RemovefromCart viewBox="0 0 875 1000"/></ContainerIcon>
+                                    </RightColumn>
+                              </CartProductContainer>
+                              )
+                        })}
+                        
                   </ProductsInCart>
             </CartShopContainer>
        );
