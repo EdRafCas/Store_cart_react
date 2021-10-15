@@ -109,12 +109,14 @@ const SubtotalPrice=styled.div`
       align-items:right;
       font-size:16px;
 `
-const ContainerIcon=styled.div`
+const ContainerIcon=styled.button`
       height:20px;
       display:flex;
       flex-direction:column;
       justify-content:flex-start;
       height:auto;
+      border:none;
+      background:none;
       
 
 `
@@ -122,6 +124,10 @@ const RemovefromCart=styled(LogoTrash)`
       height:50%;
       width:auto;
       min-height:20px;
+
+
+`
+const SubtotalContainer=styled.div`
 
 `
 
@@ -133,6 +139,7 @@ const {changeAmountProduct} =useContext(CartIndexContext);
 const {cart} =useContext(CartIndexContext);
 const {addProductToCart} =useContext(CartIndexContext);
 const {reduceProductInCart} =useContext(CartIndexContext);
+const {removeProductFromCart} =useContext(CartIndexContext);
 
 
 const modifyAmount = (e) => {
@@ -142,6 +149,7 @@ const modifyAmount = (e) => {
             changeAmountProduct(amountProduct -1)}
       }
 
+      /* Number(productsInCart.amount*productsInCart.price).toFixed(2) */
 
       return ( 
             <CartShopContainer>
@@ -153,7 +161,7 @@ const modifyAmount = (e) => {
                   <ProductsInCart>
                         {cart.map((productsInCart, index)=>{
                               return(
-                              <CartProductContainer>
+                              <CartProductContainer key={index}>
                                     <LeftColumn>
                                           <ImageContainer>
                                                 <img src={productsInCart.src} alt={productsInCart.alt} width="100%" height="auto" /> 
@@ -185,16 +193,17 @@ const modifyAmount = (e) => {
                                           </DescriptionContainer>
                                     </LeftColumn>
                                     <RightColumn>
-                                          <SubtotalPrice>${
-                                          Number(productsInCart.amount*productsInCart.price).toFixed(2)
-                                          }</SubtotalPrice>
-                                          <ContainerIcon><RemovefromCart viewBox="0 0 875 1000"/></ContainerIcon>
+                                          <SubtotalPrice>${productsInCart.subtotal}</SubtotalPrice>
+                                          <ContainerIcon onClick={()=>removeProductFromCart(productsInCart.id
+                                          )}>
+                                                <RemovefromCart viewBox="0 0 875 1000"/>
+                                          </ContainerIcon>
                                     </RightColumn>
                               </CartProductContainer>
                               )
-                        })}
-                        
+                        })}   
                   </ProductsInCart>
+                  <SubtotalContainer></SubtotalContainer>
             </CartShopContainer>
        );
 }
