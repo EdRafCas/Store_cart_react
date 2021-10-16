@@ -8,7 +8,7 @@ const CartShopProvider = ({children}) => {
 
      const addProductToCart = (idProductToAdd, photoProductToAdd, nameProductToAdd, oldPriceProductToAdd, priceProductToAdd, nametagProductToAdd, altProductToAdd) =>{
            if(cart.length === 0) {
-                  modifyCart([{id:idProductToAdd, src:photoProductToAdd, name:nameProductToAdd,  oldPrice:oldPriceProductToAdd, price:priceProductToAdd, nametagProductToAdd, alt:altProductToAdd, amount:1}])
+                  modifyCart([{id:idProductToAdd, src:photoProductToAdd, name:nameProductToAdd, oldPrice:oldPriceProductToAdd, price:priceProductToAdd, nametag:nametagProductToAdd, alt:altProductToAdd, amount:1, subtotal:priceProductToAdd}])
                   console.log(cart)
            } else {
                   const newCart = [...cart];
@@ -42,7 +42,7 @@ const CartShopProvider = ({children}) => {
                                     name:nameProductToAdd,
                                     oldPrice:oldPriceProductToAdd,
                                     price:priceProductToAdd,
-                                    nametagProductToAdd,
+                                    nametag:nametagProductToAdd,
                                     alt:altProductToAdd, 
                                     amount:1
                               }

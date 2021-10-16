@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import React,{useContext} from 'react';
-import GalleryProducts from "../Elements/ProductList";
 import {ReactComponent as LogoTrash} from "../img/trash-icon.svg";
 import {CartIndexContext} from './../Context/ShoppingCartContext'
 
@@ -16,13 +15,11 @@ const Headline=styled.div`
       flex-direction:row;
       width:100%;
       justify-content:space-between;
-
       p{
             font-size:14px;
             font-weight:normal;
             text-transform:uppercase;
       }
-
 `
 const Title = styled.h4`
       display:block;
@@ -57,26 +54,22 @@ const RightColumn=styled.div`
       gap:20px;
       grid-template-columns: 7fr 1fr;
       grid-template-rows: 40px;
-
 `
 const ImageContainer=styled.div`
       padding: 5px;
-      `
+`
 
 const DescriptionContainer = styled.div`
       display:flex;
       flex-direction:column;
       gap:10px;
-
 `
 
 const ProductName=styled.div`
-
       a{ 
       text-decoration:none;
       color:#000;
       font-size:16px;
-
       }
 `
 const ProductPrice=styled.div`
@@ -117,37 +110,42 @@ const ContainerIcon=styled.button`
       height:auto;
       border:none;
       background:none;
-      
-
 `
 const RemovefromCart=styled(LogoTrash)`
       height:50%;
       width:auto;
       min-height:20px;
-
-
 `
 const SubtotalContainer=styled.div`
+
+`
+const EmptyCart=styled.div`
+display:block;
+box-sizing: border-box;
+padding: 5px 0;
+text-align: center;
+background: none;
+font-size: 14px;
+border: 0;
+border-radius: 0;
+text-transform: uppercase;
+text-shadow: none;
+color: #c09853;
+margin-bottom: 20px;
 
 `
 
 
 
 const Cart = () => {
-const {amountProduct} = useContext(CartIndexContext);
-const {changeAmountProduct} =useContext(CartIndexContext);
 const {cart} =useContext(CartIndexContext);
 const {addProductToCart} =useContext(CartIndexContext);
 const {reduceProductInCart} =useContext(CartIndexContext);
 const {removeProductFromCart} =useContext(CartIndexContext);
 
 
-const modifyAmount = (e) => {
-      if(e.target.name==="Increase" && amountProduct >=1) {
-            changeAmountProduct(amountProduct +1)}
-      if(e.target.name==="Reduce" && amountProduct >=2) {
-            changeAmountProduct(amountProduct -1)}
-      }
+const SubtotalSum = cart.reduce((total, currentValue) => total = total + currentValue.subtotal, 0)
+      
 
       /* Number(productsInCart.amount*productsInCart.price).toFixed(2) */
 
@@ -159,7 +157,8 @@ const modifyAmount = (e) => {
                         <p>Subtotal</p>
                   </Headline>
                   <ProductsInCart>
-                        {cart.map((productsInCart, index)=>{
+                        {cart.length> 0?
+                        cart.map((productsInCart, index)=>{
                               return(
                               <CartProductContainer key={index}>
                                     <LeftColumn>
@@ -193,7 +192,7 @@ const modifyAmount = (e) => {
                                           </DescriptionContainer>
                                     </LeftColumn>
                                     <RightColumn>
-                                          <SubtotalPrice>${productsInCart.subtotal}</SubtotalPrice>
+                                          <SubtotalPrice>${Number(productsInCart.subtotal).toFixed(2)}</SubtotalPrice>
                                           <ContainerIcon onClick={()=>removeProductFromCart(productsInCart.id
                                           )}>
                                                 <RemovefromCart viewBox="0 0 875 1000"/>
@@ -201,9 +200,13 @@ const modifyAmount = (e) => {
                                     </RightColumn>
                               </CartProductContainer>
                               )
-                        })}   
+                        })
+                        : <EmptyCart>ADD SOMETHING TO YOUR CART</EmptyCart>}   
                   </ProductsInCart>
-                  <SubtotalContainer></SubtotalContainer>
+                  <SubtotalContainer>{cart.length > 0 ?
+                  Number(SubtotalSum).toFixed(2)
+                  : ""}
+                  </SubtotalContainer>
             </CartShopContainer>
        );
 }

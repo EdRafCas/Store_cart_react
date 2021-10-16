@@ -14,7 +14,7 @@ export default [
         nametag: "red-cargo-pants",
         alt:"Red cargo pants",
         price: "5600.00",
-        sharePrice: "1300"
+        sharePrice: "1300" 
       },
       { id: 2,
         src: Product2,
