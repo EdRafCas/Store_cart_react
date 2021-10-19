@@ -1,7 +1,8 @@
 import React,{useContext} from 'react';
-import {useParams, Link} from  'react-router-dom';
+import {useParams} from  'react-router-dom';
 import styled from 'styled-components';
 import ProductList from './../Elements/ProductList';
+import {RedirectButtom,Separator, DirectionProduct}  from './../Elements/ElementsProductList'
 import {CartIndexContext} from '../Context/ShoppingCartContext';
 
 const ContainerProductPage=styled.div`
@@ -11,30 +12,6 @@ const ContainerProductPage=styled.div`
       padding-top:5px;
 
 `
-const DirectionProduct=styled.div`
-      display:flex;
-      flex-direction:row;
-      justify-content:flex-start;
-      align-items:center;
-`
-const RedirectButtom =styled(Link)`
-      font-size:16px;
-      display:inline-block;
-      width:auto;
-      padding:15px 0px 15px 0px;
-      text-decoration:none;
-      color:#000;
-
-      &:hover{
-            text-decoration:underline;
-            color:#000;
-      }
-`
-const Separator =styled.span`
-      display:inline-block;
-      margin: 0px 5px;
-`
-
 const InnerContainer=styled.div`
       width:100%;
       display: grid;
@@ -157,6 +134,8 @@ const Product = (props) => {
                   <ContainerProductPage>
                         <DirectionProduct>
                               <RedirectButtom to="/"> Main</RedirectButtom> 
+                              <Separator>/</Separator> 
+                              <RedirectButtom to="/Colection"> Colection</RedirectButtom>
                               <Separator>/</Separator> 
                               <RedirectButtom to="/Colection"> Colection</RedirectButtom>
                               <Separator>/</Separator> 

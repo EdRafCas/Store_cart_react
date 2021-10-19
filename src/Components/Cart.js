@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import React,{useContext} from 'react';
+import {Link} from 'react-router-dom';
 import {ReactComponent as LogoTrash} from "../img/trash-icon.svg";
 import {CartIndexContext} from './../Context/ShoppingCartContext'
 
@@ -65,12 +66,15 @@ const DescriptionContainer = styled.div`
       gap:10px;
 `
 
-const ProductName=styled.div`
-      a{ 
-      text-decoration:none;
-      color:#000;
+const LinkName =styled(Link)`
+      margin:5px 0px;
+      display:block;
+      text-align:left;
       font-size:16px;
-      }
+      cursor: pointer;
+      text-transform: uppercase;
+      text-decoration:none;
+      color: #000;
 `
 const ProductPrice=styled.div`
 
@@ -166,7 +170,7 @@ const SubtotalSum = cart.reduce((total, currentValue) => total = total + current
                                                 <img src={productsInCart.src} alt={productsInCart.alt} width="100%" height="auto" /> 
                                           </ImageContainer>
                                           <DescriptionContainer>
-                                                <ProductName> <a href="/#">{productsInCart.name}</a></ProductName>
+                                                <LinkName to={`/Colection/Product/${productsInCart.nametag}`}>{productsInCart.name}</LinkName>
                                                 <ProductPrice>${productsInCart.price}</ProductPrice>
                                                 <ProductCuantity>
                                                       <ReduceButton name="Reduce" onClick={()=>reduceProductInCart(

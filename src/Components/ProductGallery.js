@@ -27,7 +27,6 @@ const LinkName =styled(Link)`
       text-transform: uppercase;
       text-decoration:none;
       color: #000;
-
 `
 const PaymentsContainer = styled.div`
       display:flex;
