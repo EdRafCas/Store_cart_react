@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import ProductGallery from './ProductGallery';
-import {RedirectButtom,Separator,DirectionProduct} from '../Elements/ElementsProductList';
-import {Link} from "react-router-dom";
+
+import {RedirectButtom,Separator,DirectionProduct,FilterRoute} from '../Elements/ElementsProductList';
+
 
 const GalleryContainer = styled.div`
       width: 100%;
@@ -58,18 +59,15 @@ const Colection = () => {
                   </HeadBarContainer>
                   
                   <GalleryContainer>
-                        <FilterBar>
-                              <div>h1</div>
-                              <div>h1</div>
-                              <div>h1</div>
-                              <div>h1</div>
-                              <div>h1</div>
-                              <div>h1</div>
-                              <div>h1</div>
-                              <div>h1</div>
-                              <div>h1</div>
-                        </FilterBar>
-                        <ProductGallery/>
+                              <FilterBar>
+                                    <FilterRoute to="/">Pants</FilterRoute>
+                                    <FilterRoute to="/Main">Shirts</FilterRoute>
+                                    <FilterRoute to="/Main">Outfits</FilterRoute>
+                                    <FilterRoute to="/Main">Headwear</FilterRoute>
+                                    <FilterRoute to="/Main">T-shirts</FilterRoute>
+                                    <FilterRoute to="/Main">Accesories</FilterRoute>
+                              </FilterBar>
+                              <ProductGallery/>                            
                   </GalleryContainer>
             </ColectionContainer>
             

@@ -14,6 +14,20 @@ const RedirectButtom =styled(Link)`
             color:#000;
       }
 `
+const FilterRoute =styled(Link)`
+      font-weight:bold;
+      font-size:16px;
+      display:inline-block;
+      width:auto;
+      padding:10px 0px 10px 0px;
+      text-decoration:none;
+      color:#000;
+
+      &:hover{
+            text-decoration:underline;
+            color:#000;
+      }
+`
 const Separator =styled.span`
       display:inline-block;
       margin: 0px 5px;
@@ -26,4 +40,4 @@ const DirectionProduct=styled.div`
 `
 
  
-export {RedirectButtom,Separator,DirectionProduct} ;
+export {RedirectButtom,Separator,DirectionProduct,FilterRoute} ;
