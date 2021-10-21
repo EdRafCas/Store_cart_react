@@ -7,9 +7,10 @@ import Product6 from './../img/product-6.jpeg';
 import Product7 from './../img/product-7.jpg';
 import Product8 from './../img/product-8.jpg';
 
-export default [
+ const ProductList =[
       { id: 1,
         src: Product1,
+        category: "Pants",
         name: "Red Cargo Pants",
         nametag: "red-cargo-pants",
         alt:"Red cargo pants",
@@ -18,6 +19,7 @@ export default [
       },
       { id: 2,
         src: Product2,
+        category: "Headwear",
         name: "White Cap",
         nametag: "white-cap",
         alt:"White Cap",
@@ -27,6 +29,7 @@ export default [
       },
       { id: 3,
         src: Product3,
+        category: "Pants",
         name: "Black Cargo Pants",
         nametag: "black-cargo-pants",
         alt:"Black Cargo Pants",
@@ -36,6 +39,7 @@ export default [
       },
       { id: 4,
         src: Product4,
+        category: "Outfits",
         name: "Black and white outfit",
         nametag: "black-and-white-outfit",
         alt:"Black and white outfit",
@@ -46,6 +50,7 @@ export default [
       
       { id: 5,
         src: Product5,
+        category: "Pants",
         name: "Purple Cargo Pants",
         nametag: "purple-cargo-pants",
         alt:"Purple cargo pants",
@@ -56,6 +61,7 @@ export default [
       
       { id: 6,
         src: Product6,
+        category: "Pants",
         name: "Black and white Cargo Pants",
         nametag: "black-and-white-cargo-pants",
         alt:"Black and white cargo pants",
@@ -66,6 +72,7 @@ export default [
       
       { id: 7,
         src: Product7,
+        category: "Outfits",
         name: "White outfit",
         nametag: "white-outfit",
         alt:"White outfit",
@@ -75,6 +82,7 @@ export default [
       },
       { id: 8,
         src: Product8,
+        category: "Outfits",
         name: "Cross outfit",
         nametag: "cross-outfit",
         alt:"Cross outfit",
@@ -84,4 +92,8 @@ export default [
       },
       
     ];
- 
+
+const Categories = [
+    "Pants", "Shirts", "Outfits", "Headwear", "Sweaters", "Accesories"
+]
+export {ProductList, Categories};

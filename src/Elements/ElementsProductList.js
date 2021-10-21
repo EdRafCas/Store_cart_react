@@ -21,6 +21,7 @@ const FilterRoute =styled(Link)`
       width:auto;
       padding:10px 0px 10px 0px;
       text-decoration:none;
+      text-transform:uppercase;
       color:#000;
 
       &:hover{
@@ -38,6 +39,5 @@ const DirectionProduct=styled.div`
       justify-content:flex-start;
       align-items:center;
 `
-
  
 export {RedirectButtom,Separator,DirectionProduct,FilterRoute} ;

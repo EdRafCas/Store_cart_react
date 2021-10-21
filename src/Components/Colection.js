@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ProductGallery from './ProductGallery';
+import { Categories } from '../Elements/ProductList';
 
 import {RedirectButtom,Separator,DirectionProduct,FilterRoute} from '../Elements/ElementsProductList';
 
@@ -49,7 +50,7 @@ const Colection = () => {
                         <DirectionProduct>
                               <RedirectButtom to="/">Main</RedirectButtom>
                               <Separator>/</Separator>
-                              <RedirectButtom to="#">PRODUCT</RedirectButtom>
+                              <RedirectButtom to="#">Colection</RedirectButtom>
                               <Separator>/</Separator>  
                         </DirectionProduct>
                         <OrderByContainer>
@@ -60,12 +61,11 @@ const Colection = () => {
                   
                   <GalleryContainer>
                               <FilterBar>
-                                    <FilterRoute to="/">Pants</FilterRoute>
-                                    <FilterRoute to="/Main">Shirts</FilterRoute>
-                                    <FilterRoute to="/Main">Outfits</FilterRoute>
-                                    <FilterRoute to="/Main">Headwear</FilterRoute>
-                                    <FilterRoute to="/Main">T-shirts</FilterRoute>
-                                    <FilterRoute to="/Main">Accesories</FilterRoute>
+                                    {Categories.map((ProductCategories, index) =>{
+                                          return(
+                                          <FilterRoute key={index} to={`/Colection/${ProductCategories}`}>{ProductCategories}</FilterRoute>   
+                                          )
+                                    })}
                               </FilterBar>
                               <ProductGallery/>                            
                   </GalleryContainer>

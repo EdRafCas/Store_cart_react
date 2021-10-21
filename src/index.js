@@ -12,6 +12,7 @@ import Contact from './Components/Contact';
 import Info from './Components/Info';
 import Cart from './Components/Cart';
 import Product from './Components/Product';
+import Category from './Components/CategoryProducts';
 import {CartShopProvider} from './../src/Context/ShoppingCartContext'
 
 
@@ -39,10 +40,11 @@ const Index = () => {
           <ContainerPages >
             <Switch>
               <Route path="/Colection" exact={true} component={Colection}/> 
-              <Route path="/Colection/Product/:nametag" exact={true} component={Product}/> 
+              <Route path="/Colection/:category/:nametag" exact={true} component={Product}/> 
               <Route path="/Contact" exact={true} component={Contact}/> 
               <Route path="/Info" exact={true} component={Info}/>
               <Route path="/Cart" exact={true} component={Cart}/> 
+              <Route path="/Colection/:category" exact={true} component={Category}/> 
               <Route path="/" exact={true} component={App}/>
               
               <App to="/"/>

@@ -1,7 +1,7 @@
 import React,{useContext} from 'react';
 import {useParams} from  'react-router-dom';
 import styled from 'styled-components';
-import ProductList from './../Elements/ProductList';
+import {ProductList} from './../Elements/ProductList';
 import {RedirectButtom,Separator, DirectionProduct}  from './../Elements/ElementsProductList'
 import {CartIndexContext} from '../Context/ShoppingCartContext';
 
@@ -137,8 +137,9 @@ const Product = (props) => {
                               <Separator>/</Separator> 
                               <RedirectButtom to="/Colection"> Colection</RedirectButtom>
                               <Separator>/</Separator> 
-                              <RedirectButtom to="/Colection"> Colection</RedirectButtom>
+                              <RedirectButtom to={`/Colection/${filteredTagName[0].category}`}>{filteredTagName[0].category}</RedirectButtom>
                               <Separator>/</Separator> 
+                              <RedirectButtom to="/#">{filteredTagName[0].name}</RedirectButtom>
                         </DirectionProduct>
                         <InnerContainer>
                               <ProductDisplay>
