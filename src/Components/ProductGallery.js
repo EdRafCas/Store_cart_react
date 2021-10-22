@@ -14,6 +14,7 @@ const ProductGallery = () => {
       return ( 
             <GalleryContainer>
                   {ProductList.map((products, index)=>{
+                        let sharePrice = ((products.price*1.1)/6).toFixed(2)
                         return(
                               <ProductContainer key={index}>
                                     <ContainerImage>
@@ -27,10 +28,10 @@ const ProductGallery = () => {
                                           {products.oldPrice ?
                                           <PreviousPrice> {products.oldPrice} </PreviousPrice>
                                           :""}
-                                          <CurrentPrice>${products.price}</CurrentPrice>
+                                          <CurrentPrice>${Number(products.price).toFixed(2)}</CurrentPrice>
                                           </CashPriceContainer>
                                           <CuotesPayment>
-                                                <p> <b>6</b> payments of <b>${products.sharePrice}</b>  with no interest</p>
+                                                <p> <b>6</b> payments of <b>${sharePrice}</b>  with no interest</p>
                                           </CuotesPayment>
                                     </PaymentsContainer>
                                     

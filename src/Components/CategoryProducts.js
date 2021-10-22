@@ -40,7 +40,6 @@ const HeadBarContainer = styled.div`
       justify-content:space-between;
       margin:0px;
       padding:0px;
-
 `
 const OrderByContainer =styled.div`
       width: 100%;
