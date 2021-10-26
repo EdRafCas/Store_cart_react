@@ -2,6 +2,9 @@ import styled from "styled-components";
 import {RedirectButtom,
       Separator,
       DirectionProduct} from '../Elements/ElementsProductList';
+import {ReactComponent as LogoPhone} from "../img/phone-icon.svg";
+import {ReactComponent as LogoEmail} from "../img/email-icon.svg";
+import {ReactComponent as LogoAddress} from "../img/address-icon.svg";
 
 const ContainerContact= styled.div`
       width:100%;
@@ -19,11 +22,11 @@ const HeadBarContainer = styled.div`
 const ContainerColumns =styled.div`
       width:100%;
       display:grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(1, 3fr 2fr);
       justify-items:center;
 `
 const AddressContainer =styled.div`
-
+      width:100%;
 `
 
 const Formulary = styled.form` 
@@ -88,7 +91,56 @@ const Label=styled.label`
       font-weight:800;
       font-size:16px;
 `
+const ContainerMap =styled.div`
+      margin:auto;
+      width:100%;
+      overflow:hidden;
+      max-height:600px;
+`
 
+const Frame =styled.iframe`
+      width:100%;
+      height:400px;
+`
+const ContactInfoContainer =styled.div`
+      display:flex;
+      flex-direction:column;
+      h3{
+            font-size:24px;
+            margin-top:20px;
+            margin-bottom:10px;
+            font-family:inherit;
+            font-weight:500;
+            line-height:1.1;
+            display:block;
+            text-transform:uppercase;
+      }
+
+`
+const IconPhone = styled(LogoPhone)`
+      width:20px;
+      min-height:20px;
+`
+const IconEmail= styled(LogoEmail)`
+      width:20px;
+      min-height:20px;
+`
+const IconAddress = styled(LogoAddress)`
+      width:20px;
+      min-height:20px;
+`
+const ContainerIcons = styled.div`
+      height:20px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-start;
+      width:auto;
+`
+const SubContainer =styled.div`
+      display:flex;
+      flex-direction:row;
+      justify-content:flex-start;
+      `
 
 const Contact = () => {
       return ( 
@@ -103,7 +155,22 @@ const Contact = () => {
                   </HeadBarContainer>
                   <ContainerColumns>
                         <AddressContainer>
-                              <div>h1</div>
+                              <ContactInfoContainer>
+                                    <h3>Contact Us</h3>
+                                          <SubContainer>
+                                                <ContainerIcons><IconPhone viewBox="0 0 1792 1792" /></ContainerIcons><p>hola</p>
+                                          </SubContainer>
+                                          <SubContainer>
+                                                <ContainerIcons><IconEmail viewBox="0 0 1792 1792" /></ContainerIcons><p>hola</p>
+                                          </SubContainer>
+                                          <SubContainer>
+                                                <ContainerIcons><IconAddress viewBox="0 0 1792 1792" /></ContainerIcons><p>hola</p>
+                                          </SubContainer>
+                              </ContactInfoContainer>
+
+                              <ContainerMap>
+                                    <Frame src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d836.9623409655084!2d-60.64123339797852!3d-32.95498625513741!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sar!4v1622504850237!5m2!1ses!2sar"></Frame>
+                              </ContainerMap>
                         </AddressContainer>
                         
                               <Formulary>
@@ -124,7 +191,7 @@ const Contact = () => {
                                     <Label>Message</Label>
                                     <TextArea message
                                           cols="30"
-                                          rows="40"
+                                          rows="20"
                                           type="text"
                                           name="message"
                                           id="message"
