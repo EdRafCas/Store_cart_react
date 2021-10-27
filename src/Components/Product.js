@@ -114,7 +114,6 @@ const AddToCartButton=styled.button`
       color:#fff;
       font-weight:400;
       font-size:18px;
-
 `
                   
 const Product = (props) => {

@@ -1,3 +1,4 @@
+import React,{useState} from 'react';
 import styled from "styled-components";
 import {RedirectButtom,
       Separator,
@@ -36,7 +37,7 @@ const Formulary = styled.form`
     justify-content: space-around;
     input {
         width: 100%;
-        text-align: center;
+        text-align: left;
         font-family: 'Work Sans', sans-serif;
         &::placeholder {
             color: rgba(0,0,0,.2);
@@ -58,7 +59,7 @@ const Input = styled.input`
                         : props.name==="email" ? "50px"    
                         : props.name==="name" ? "50px"    
                         :"auto"};
-     text-align: justify;
+      text-align:left;
       white-space:nowrap;
       overflow:scroll;
 
@@ -91,6 +92,22 @@ const Label=styled.label`
       font-weight:800;
       font-size:16px;
 `
+const ContactButton=styled.button`
+      display:block;
+      padding: 9px 12px;
+      background:#ffff;
+      color:#000;
+      font-weight:800;
+      font-size:18px;
+      border: 4px solid #000;
+      :hover{
+            
+            background:#000;
+            color:#ffff;
+      }
+
+`
+
 const ContainerMap =styled.div`
       margin:auto;
       width:100%;
@@ -140,9 +157,43 @@ const SubContainer =styled.div`
       display:flex;
       flex-direction:row;
       justify-content:flex-start;
-      `
+`
+const SocialNetworkBar = styled.div`
+      box-sizing:content-box;
+      width:100%;
+      display:flex;
+      flex-direction:row;
+      justify-content:center;
+      padding:5px;
+      background:#000;
+      color:#fff;
+      height:50px;
+      div{
+            margin:15px;
+            border: 2px solid white;
+      }
+
+`
+
 
 const Contact = () => {
+      const [inputName, changeInputName] = useState("");
+      const [inputEmail, changeInputEmail] = useState("");
+      const [textMessage, changeTextMessage] = useState("");
+
+      const handleChange = (e) =>{
+            if(e.target.name ==="name"){
+                  changeInputName(e.target.value)
+            }if(e.target.name ==="email"){
+                  changeInputEmail(e.target.value)
+            }if (e.target.name ==="message"){
+                  changeTextMessage(e.target.value)
+            }
+      }
+      const showValue = (e) => {
+            e.preventDefault();
+            console.log(inputName,inputEmail, textMessage)
+      }
       return ( 
             <ContainerContact>
                   <HeadBarContainer>
@@ -158,13 +209,13 @@ const Contact = () => {
                               <ContactInfoContainer>
                                     <h3>Contact Us</h3>
                                           <SubContainer>
-                                                <ContainerIcons><IconPhone viewBox="0 0 1792 1792" /></ContainerIcons><p>hola</p>
+                                                <ContainerIcons><IconPhone viewBox="0 0 1792 1792" /></ContainerIcons><p>+54 11 XXXX XXXX</p>
                                           </SubContainer>
                                           <SubContainer>
-                                                <ContainerIcons><IconEmail viewBox="0 0 1792 1792" /></ContainerIcons><p>hola</p>
+                                                <ContainerIcons><IconEmail viewBox="0 0 1792 1792" /></ContainerIcons><p>Portfolio@email.com</p>
                                           </SubContainer>
                                           <SubContainer>
-                                                <ContainerIcons><IconAddress viewBox="0 0 1792 1792" /></ContainerIcons><p>hola</p>
+                                                <ContainerIcons><IconAddress viewBox="0 0 1792 1792" /></ContainerIcons><p>Rosario-Argentina</p>
                                           </SubContainer>
                               </ContactInfoContainer>
 
@@ -179,14 +230,18 @@ const Contact = () => {
                                           type="text"
                                           name="name"
                                           id="name"
-                                          placeholder=""
+                                          placeholder="Name"
+                                          value={inputName}
+                                          onChange={handleChange}
                                     />
                                     <Label>Email</Label>
                                     <Input
-                                          type="text"
-                                          name="name"
-                                          id="name"
+                                          type="email"
+                                          name="email"
+                                          id="email"
                                           placeholder=""
+                                          value={inputEmail}
+                                          onChange={handleChange}
                                     />
                                     <Label>Message</Label>
                                     <TextArea message
@@ -196,10 +251,17 @@ const Contact = () => {
                                           name="message"
                                           id="message"
                                           placeholder="Leave us your message here"
+                                          value={textMessage}
+                                          onChange={handleChange}
                                     />
+                                    <ContactButton type="submit" onClick={showValue}>SEND</ContactButton>
                               </Formulary>
                         
                   </ContainerColumns>
+                  <SocialNetworkBar>
+                              <div>Hola</div>
+                              <div>Hola</div>
+                  </SocialNetworkBar>
                   
             </ContainerContact>
             
