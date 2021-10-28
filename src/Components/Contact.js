@@ -6,6 +6,8 @@ import {RedirectButtom,
 import {ReactComponent as LogoPhone} from "../img/phone-icon.svg";
 import {ReactComponent as LogoEmail} from "../img/email-icon.svg";
 import {ReactComponent as LogoAddress} from "../img/address-icon.svg";
+import {ReactComponent as LogoInstagram} from "../img/instagram-icon.svg";
+import {ReactComponent as LogoFacebook} from "../img/facebook-icon.svg";
 
 const ContainerContact= styled.div`
       width:100%;
@@ -25,6 +27,7 @@ const ContainerColumns =styled.div`
       display:grid;
       grid-template-columns: repeat(1, 3fr 2fr);
       justify-items:center;
+      margin:30px 0px;
 `
 const AddressContainer =styled.div`
       width:100%;
@@ -35,10 +38,10 @@ const Formulary = styled.form`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    gap:5px;
     input {
         width: 100%;
         text-align: left;
-        font-family: 'Work Sans', sans-serif;
         &::placeholder {
             color: rgba(0,0,0,.2);
         }
@@ -167,12 +170,46 @@ const SocialNetworkBar = styled.div`
       padding:5px;
       background:#000;
       color:#fff;
-      height:50px;
-      div{
-            margin:15px;
-            border: 2px solid white;
+      height:100px;
+      padding-top:20px;
+      a{
+            height:70px;
+            display:flex;
+            flex-direction:column;
+            justify-content:flex-start;
+            width:auto;
+            border: 4px solid white;
+            margin:10px;
+            :hover{
+            border: 4px solid #000;
+            svg{
+                  pointer-events:none;
+            }
+            }
+
       }
 
+`
+const IconInstagram = styled(LogoInstagram)`
+      width:50px;
+      min-height:50px;
+      color:#fff;
+      fill:#fff;
+      margin:5px;
+`
+const IconFacebook= styled(LogoFacebook)`
+      width:50px;
+      min-height:50px;
+      color:#fff;
+      fill:#fff;
+      margin:5px;
+`
+const ContainerIconSocial = styled.a`
+      height:20px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-start;
+      width:auto;
 `
 
 
@@ -259,8 +296,9 @@ const Contact = () => {
                         
                   </ContainerColumns>
                   <SocialNetworkBar>
-                              <div>Hola</div>
-                              <div>Hola</div>
+                              <ContainerIconSocial href ="https://www.instagram.com/"><IconInstagram viewBox="0 0 448 512"/></ContainerIconSocial>
+                              <ContainerIconSocial href ="https://www.facebook.com/"><IconFacebook viewBox="0 0 320 512"/></ContainerIconSocial>
+                              
                   </SocialNetworkBar>
                   
             </ContainerContact>
