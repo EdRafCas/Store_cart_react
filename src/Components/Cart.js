@@ -2,6 +2,7 @@ import styled from "styled-components";
 import React,{useContext} from 'react';
 import {Link} from 'react-router-dom';
 import {ReactComponent as LogoTrash} from "../img/trash-icon.svg";
+import {ReactComponent as LogoTruck} from "../img/truck-icon.svg";
 import {CartIndexContext} from './../Context/ShoppingCartContext'
 
 const CartShopContainer= styled.div`
@@ -120,9 +121,7 @@ const RemovefromCart=styled(LogoTrash)`
       width:auto;
       min-height:20px;
 `
-const SubtotalContainer=styled.div`
 
-`
 const EmptyCart=styled.div`
 display:block;
 box-sizing: border-box;
@@ -136,9 +135,55 @@ text-transform: uppercase;
 text-shadow: none;
 color: #c09853;
 margin-bottom: 20px;
+`
+const SubtotalContainer=styled.div`
+      font-size:16px;
+      font-weight:600;
 
 `
 
+const FowardAddressContainer=styled.div`
+
+`
+
+const TwoColumnsContainer=styled.div`
+      width:100%;
+      display:grid;
+      grid-template-columns: repeat(1, 1fr 1fr);
+      margin:30px 0px;
+`
+
+const TotalContainer=styled.div`
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:flex-end;
+`
+const FulllTotal=styled.div`
+      font-size:18px;
+      font-weight:800;
+
+`
+const IconTruck = styled(LogoTruck)`
+      width:20px;
+      min-height:20px;
+`
+const ContainerIcons = styled.div`
+      height:20px;
+      display:flex;
+      flex-direction:row;
+      justify-content:flex-start;
+      width:auto;
+      p{
+            margin-left:15px;
+            margin-bottom:0px;
+            height:auto;}
+`
+const TitleShipping =styled.div`
+      display:flex;
+      flex-direction:row;
+
+`
 
 
 const Cart = () => {
@@ -207,10 +252,22 @@ const SubtotalSum = cart.reduce((total, currentValue) => total = total + current
                         })
                         : <EmptyCart>ADD SOMETHING TO YOUR CART</EmptyCart>}   
                   </ProductsInCart>
-                  <SubtotalContainer>{cart.length > 0 ?
-                  Number(SubtotalSum).toFixed(2)
-                  : ""}
-                  </SubtotalContainer>
+                  <TwoColumnsContainer>
+                        <FowardAddressContainer>
+                              <ContainerIcons><IconTruck/><p>Shipping zipcode</p></ContainerIcons>
+                              <TitleShipping>
+                                    
+                              </TitleShipping>
+                              
+                              <div>hello</div>
+                        </FowardAddressContainer>
+                        <TotalContainer>
+                              <SubtotalContainer> SUBTOTAL: ${cart.length > 0 ? Number(SubtotalSum).toFixed(2) : "0,00"}</SubtotalContainer>
+                              <FulllTotal> TOTAL AMOUNT: ${cart.length > 0 ? Number(SubtotalSum).toFixed(2) : "0,00"}</FulllTotal>
+                        </TotalContainer>
+                               
+                  </TwoColumnsContainer>
+                  
             </CartShopContainer>
        );
 }
