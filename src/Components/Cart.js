@@ -3,6 +3,7 @@ import React,{useContext, useState} from 'react';
 import {Link} from 'react-router-dom';
 import {ReactComponent as LogoTrash} from "../img/trash-icon.svg";
 import {ReactComponent as LogoTruck} from "../img/truck-icon.svg";
+import {ReactComponent as LogoStore} from "../img/store-icon.svg";
 import {CartIndexContext} from './../Context/ShoppingCartContext'
 
 const CartShopContainer= styled.div`
@@ -123,18 +124,18 @@ const RemovefromCart=styled(LogoTrash)`
 `
 
 const EmptyCart=styled.div`
-display:block;
-box-sizing: border-box;
-padding: 5px 0;
-text-align: center;
-background: none;
-font-size: 14px;
-border: 0;
-border-radius: 0;
-text-transform: uppercase;
-text-shadow: none;
-color: #c09853;
-margin-bottom: 20px;
+      display:block;
+      box-sizing: border-box;
+      padding: 5px 0;
+      text-align: center;
+      background: none;
+      font-size: 14px;
+      border: 0;
+      border-radius: 0;
+      text-transform: uppercase;
+      text-shadow: none;
+      color: #c09853;
+      margin-bottom: 20px;
 `
 const SubtotalContainer=styled.div`
       font-size:16px;
@@ -204,9 +205,6 @@ const InputZipCode =styled.input`
       :active{
              transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
       }
-     
-
-
 `
 const CalculateShipping =styled.button`
       box-sizing: border-box;
@@ -238,13 +236,33 @@ const CalculateShipping =styled.button`
 const RetireAtLocal =styled.div`
       border-top:1px solid #000;
       padding:15px 0px;
+      height:20px;
+      display:flex;
+      flex-direction:row;
+      justify-content:flex-start;
+      width:auto;
+      p{
+            margin-left:15px;
+            margin-bottom:0px;
+            height:auto;}
+`
+const IconStore= styled(LogoStore)`
+      width:20px;
+      min-height:20px;
 `
 const CurrentAddress=styled.div`
+color: #000000;
+outline: 3px solid #000000;
+outline-offset: -2px;
+cursor: pointer;
+font-size: 16px;
+padding: 20px 15px;
 
 `
 const Address=styled.span`
 
 `
+
 
 const Cart = () => {
 const {cart} =useContext(CartIndexContext);
@@ -320,8 +338,8 @@ const SubtotalSum = cart.reduce((total, currentValue) => total = total + current
                               <InputZipCode type="text" placeholder="0001"/>
                               <CalculateShipping onClick={()=>changeshippingMethod(!shippingMethod)}>Calculate</CalculateShipping>
                               </TitleShipping>
-                              <RetireAtLocal><IconTruck/>asdas</RetireAtLocal>
-                              <CurrentAddress>Hello Darkness </CurrentAddress>
+                              <RetireAtLocal><IconStore/><p>Shipping zipcode</p></RetireAtLocal>
+                              <CurrentAddress><Address>Hello Darkness</Address> </CurrentAddress>
                               
                         </FowardAddressContainer>
                         <TotalContainer>
