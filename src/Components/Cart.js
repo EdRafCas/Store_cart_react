@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React,{useContext} from 'react';
+import React,{useContext, useState} from 'react';
 import {Link} from 'react-router-dom';
 import {ReactComponent as LogoTrash} from "../img/trash-icon.svg";
 import {ReactComponent as LogoTruck} from "../img/truck-icon.svg";
@@ -143,6 +143,9 @@ const SubtotalContainer=styled.div`
 `
 
 const FowardAddressContainer=styled.div`
+      display:flex;
+      flex-direction:column;
+      gap:20px;
 
 `
 
@@ -180,11 +183,68 @@ const ContainerIcons = styled.div`
             height:auto;}
 `
 const TitleShipping =styled.div`
-      display:flex;
-      flex-direction:row;
-
+      width:100%;
+      display:grid;
+      grid-template-columns: repeat(1, 1fr 1fr);
+      gap:20px;
 `
 
+const InputZipCode =styled.input`
+      box-sizing: border-box;
+      width: 100%;
+      background-color: rgba(226, 228, 237, 0.3);
+      border: 1px solid #E2E4ED;
+      border-radius: 4px;
+      color: #676767;
+      font-weight: lighter;
+      padding: 10px 6px;
+      box-shadow: none;
+      height: 44px;
+      min-height:30px;
+      :active{
+             transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+      }
+     
+
+
+`
+const CalculateShipping =styled.button`
+      box-sizing: border-box;
+      padding: 8px 12px;
+      background-color: transparent;
+      color: #000000;
+      fill: #000000;
+      border: 3px solid #000000;
+      font-size: 16px;
+      font-weight: 400;font-weight: 400;
+      line-height: 1.42857143;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      :hover{
+            color:#fff;
+            background:#000000;
+            
+            :active{
+                  border: 3px double #fff;
+                  font-size: 16px;
+                  font-weight: 800;
+            }   
+      }
+`
+
+const RetireAtLocal =styled.div`
+      border-top:1px solid #000;
+      padding:15px 0px;
+`
+const CurrentAddress=styled.div`
+
+`
+const Address=styled.span`
+
+`
 
 const Cart = () => {
 const {cart} =useContext(CartIndexContext);
@@ -192,6 +252,7 @@ const {addProductToCart} =useContext(CartIndexContext);
 const {reduceProductInCart} =useContext(CartIndexContext);
 const {removeProductFromCart} =useContext(CartIndexContext);
 
+const [shippingMethod, changeshippingMethod] = useState(false);
 
 const SubtotalSum = cart.reduce((total, currentValue) => total = total + currentValue.subtotal, 0)
       
@@ -256,10 +317,12 @@ const SubtotalSum = cart.reduce((total, currentValue) => total = total + current
                         <FowardAddressContainer>
                               <ContainerIcons><IconTruck/><p>Shipping zipcode</p></ContainerIcons>
                               <TitleShipping>
-                                    
+                              <InputZipCode type="text" placeholder="0001"/>
+                              <CalculateShipping onClick={()=>changeshippingMethod(!shippingMethod)}>Calculate</CalculateShipping>
                               </TitleShipping>
+                              <RetireAtLocal><IconTruck/>asdas</RetireAtLocal>
+                              <CurrentAddress>Hello Darkness </CurrentAddress>
                               
-                              <div>hello</div>
                         </FowardAddressContainer>
                         <TotalContainer>
                               <SubtotalContainer> SUBTOTAL: ${cart.length > 0 ? Number(SubtotalSum).toFixed(2) : "0,00"}</SubtotalContainer>
