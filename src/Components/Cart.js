@@ -3,8 +3,6 @@ import React,{useContext} from 'react';
 import {Link} from 'react-router-dom';
 import ZipCodeSelect from "./ZipCodeSelect";
 import {ReactComponent as LogoTrash} from "../img/trash-icon.svg";
-import {ReactComponent as LogoTruck} from "../img/truck-icon.svg";
-import {ReactComponent as LogoStore} from "../img/store-icon.svg";
 import {CartIndexContext} from './../Context/ShoppingCartContext'
 
 const CartShopContainer= styled.div`
@@ -141,14 +139,6 @@ const EmptyCart=styled.div`
 const SubtotalContainer=styled.div`
       font-size:16px;
       font-weight:600;
-
-`
-
-const FowardAddressContainer=styled.div`
-      display:flex;
-      flex-direction:column;
-      gap:20px;
-
 `
 
 const TwoColumnsContainer=styled.div`
@@ -158,61 +148,18 @@ const TwoColumnsContainer=styled.div`
       margin:30px 0px;
 `
 
+const FulllTotal=styled.div`
+      font-size:18px;
+      font-weight:800;
+`
+
 const TotalContainer=styled.div`
       display:flex;
       flex-direction:column;
       justify-content:center;
       align-items:flex-end;
 `
-const FulllTotal=styled.div`
-      font-size:18px;
-      font-weight:800;
 
-`
-const IconTruck = styled(LogoTruck)`
-      width:20px;
-      min-height:20px;
-`
-const ContainerIcons = styled.div`
-      height:20px;
-      display:flex;
-      flex-direction:row;
-      justify-content:flex-start;
-      width:auto;
-      p{
-            margin-left:15px;
-            margin-bottom:0px;
-            height:auto;}
-`
-const RetireAtLocal =styled.div`
-      border-top:1px solid #000;
-      padding:15px 0px;
-      height:20px;
-      display:flex;
-      flex-direction:row;
-      justify-content:flex-start;
-      width:auto;
-      p{
-            margin-left:15px;
-            margin-bottom:0px;
-            height:auto;}
-`
-const IconStore= styled(LogoStore)`
-      width:20px;
-      min-height:20px;
-`
-const CurrentAddress=styled.div`
-color: #000000;
-outline: 3px solid #000000;
-outline-offset: -2px;
-cursor: pointer;
-font-size: 16px;
-padding: 20px 15px;
-
-`
-const Address=styled.span`
-
-`
 
 
 const Cart = () => {
@@ -282,20 +229,16 @@ const SubtotalSum = cart.reduce((total, currentValue) => total = total + current
                         })
                         : <EmptyCart>ADD SOMETHING TO YOUR CART</EmptyCart>}   
                   </ProductsInCart>
-                  <TwoColumnsContainer>
-                        <FowardAddressContainer>
-                              <ContainerIcons><IconTruck/><p>Shipping zipcode</p></ContainerIcons>
+                  {cart.length> 0?
+                        <TwoColumnsContainer>
                               <ZipCodeSelect/>
-                              <RetireAtLocal><IconStore/><p>Shipping zipcode</p></RetireAtLocal>
-                              <CurrentAddress><Address>Hello Darkness</Address> </CurrentAddress>
-                              
-                        </FowardAddressContainer>
-                        <TotalContainer>
-                              <SubtotalContainer> SUBTOTAL: ${cart.length > 0 ? Number(SubtotalSum).toFixed(2) : "0,00"}</SubtotalContainer>
-                              <FulllTotal> TOTAL AMOUNT: ${cart.length > 0 ? Number(SubtotalSum).toFixed(2) : "0,00"}</FulllTotal>
-                        </TotalContainer>
-                               
-                  </TwoColumnsContainer>
+                              <TotalContainer>
+                                    <SubtotalContainer> SUBTOTAL: ${cart.length > 0 ? Number(SubtotalSum).toFixed(2) : "0,00"}</SubtotalContainer>
+                                    <FulllTotal> TOTAL AMOUNT: ${cart.length > 0 ? Number(SubtotalSum).toFixed(2) : "0,00"}</FulllTotal>
+                              </TotalContainer>
+                                    
+                        </TwoColumnsContainer>
+                  :""}
                   
             </CartShopContainer>
        );
