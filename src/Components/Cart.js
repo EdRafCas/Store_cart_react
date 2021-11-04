@@ -167,6 +167,7 @@ const {cart} =useContext(CartIndexContext);
 const {addProductToCart} =useContext(CartIndexContext);
 const {reduceProductInCart} =useContext(CartIndexContext);
 const {removeProductFromCart} =useContext(CartIndexContext);
+const {currentShippingPrice} =useContext(CartIndexContext);
 
 
 
@@ -233,8 +234,8 @@ const SubtotalSum = cart.reduce((total, currentValue) => total = total + current
                         <TwoColumnsContainer>
                               <ZipCodeSelect/>
                               <TotalContainer>
-                                    <SubtotalContainer> SUBTOTAL: ${cart.length > 0 ? Number(SubtotalSum).toFixed(2) : "0,00"}</SubtotalContainer>
-                                    <FulllTotal> TOTAL AMOUNT: ${cart.length > 0 ? Number(SubtotalSum).toFixed(2) : "0,00"}</FulllTotal>
+                                    <SubtotalContainer> SUBTOTAL: ${cart.length > 0 ? Number(SubtotalSum+currentShippingPrice).toFixed(2) : "0,00"}</SubtotalContainer>
+                                    <FulllTotal> TOTAL AMOUNT: ${cart.length > 0 ? Number(SubtotalSum+currentShippingPrice).toFixed(2) : "0,00"}</FulllTotal>
                               </TotalContainer>
                                     
                         </TwoColumnsContainer>

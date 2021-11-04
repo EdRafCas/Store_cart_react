@@ -1,5 +1,6 @@
-import React,{useState} from 'react';
+import React,{useState, useContext} from 'react';
 import styled from 'styled-components';
+import {CartIndexContext} from './../Context/ShoppingCartContext'
 import {ReactComponent as LogoTruck} from "../img/truck-icon.svg";
 import {ReactComponent as LogoStore} from "../img/store-icon.svg";
 import {ReactComponent as IconDown} from './../img/arrowdown-icon.svg'
@@ -217,24 +218,41 @@ const [shownSelect, changeShownSelect] =useState(false);
 const [currentZipcode, changeZipcode] = useState('2000');
 const [currentZipcodeAddress, changeZipcodeAddress] = useState('Rosario');
 const [shippingMethod, changeshippingMethod] = useState(true);
+const {changeShippingPrice} =useContext(CartIndexContext);
+const {currentShippingPrice} =useContext(CartIndexContext);
+const [tryer, changeTryer] = useState(0);
+
 
 const handleClick = (e) =>{
       changeZipcode(e.currentTarget.dataset.value)
       changeZipcodeAddress(e.currentTarget.dataset.address)
+      changeTryer(parseInt(e.currentTarget.dataset.cost))
 };
 
+const handleCalc = () =>{
+      changeshippingMethod(!shippingMethod)
+      changeShippingPrice(tryer)
+      console.log(tryer)
+      
+}
+
+const handleCalcTwo = () =>{
+      changeshippingMethod(!shippingMethod)
+      changeShippingPrice(0)     
+}
+
 const zipcodes = [
-      {id:"Rosario", value:"2000"},
-      {id:"Cordoba", value:"2001"},
-      {id:"Rioja", value:"2002"},
-      {id:"San Lorenzo", value:"2003"},
-      {id:"Avillaneda", value:"2004"},
-      {id:"San Juan", value:"2005"},
-      {id:"Bariloche", value:"2006"},
-      {id:"Santa Cruz", value:"2007"},
-      {id:"Neuquen", value:"2008"},
-      {id:"San Luis", value:"2009"},
-      {id:"Mendoza", value:"2010"}
+      {id:"Rosario", value:"2000", cost:500},
+      {id:"Cordoba", value:"2001", cost:1000},
+      {id:"Rioja", value:"2002", cost:1500},
+      {id:"San Lorenzo", value:"2003", cost:2500},
+      {id:"Avillaneda", value:"2004", cost:3500},
+      {id:"San Juan", value:"2005", cost:4500},
+      {id:"Bariloche", value:"2006", cost:5500},
+      {id:"Santa Cruz", value:"2007", cost:6500},
+      {id:"Neuquen", value:"2008", cost:7500},
+      {id:"San Luis", value:"2009", cost:8500},
+      {id:"Mendoza", value:"2010", cost:9500}
 ];
 
 
@@ -252,6 +270,7 @@ const zipcodes = [
                                                                   key={zipcode.id}
                                                                   data-value={zipcode.value}
                                                                   data-address={zipcode.id}
+                                                                  data-cost={zipcode.cost}
                                                                   onClick={handleClick}
                                                                   >
                                                                   {zipcode.value}
@@ -260,17 +279,18 @@ const zipcodes = [
                                                 </Options>
                                           }
                               </ContainerSelect>
-                              <CalculateShipping onClick={()=>changeshippingMethod(!shippingMethod)}>Calculate</CalculateShipping>
+                              <CalculateShipping onClick={handleCalc}>Calculate</CalculateShipping>
                         </ShippingSelect>      
                         :shippingMethod ===false ?
                         <>
                         <ShippingSelectTwo>
                               <p>Delivery options for zipcode {currentZipcode}</p>
-                              <ChangeShipping onClick={()=>changeshippingMethod(!shippingMethod)}>Change</ChangeShipping> 
+                              <ChangeShipping onClick={handleCalcTwo}>Change</ChangeShipping> 
                         </ShippingSelectTwo>    
                         <AdressContainer>
                               <Address>1</Address> 
                               <Address>Envio a {currentZipcodeAddress} </Address> 
+                              <Address>${currentShippingPrice} </Address> 
                         </AdressContainer> 
                         </>
                   :""} 

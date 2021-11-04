@@ -5,6 +5,8 @@ const CartIndexContext = React.createContext();
 const CartShopProvider = ({children}) => {
      const [cart, modifyCart] = useState([]);
      const [amountProduct, changeAmountProduct] = useState(1);
+     const [currentShippingPrice, changeShippingPrice] = useState(0);
+
 
      const addProductToCart = (idProductToAdd, photoProductToAdd, nameProductToAdd, oldPriceProductToAdd, priceProductToAdd, nametagProductToAdd, altProductToAdd) =>{
            if(cart.length === 0) {
@@ -98,7 +100,9 @@ const CartShopProvider = ({children}) => {
                                                 changeAmountProduct:changeAmountProduct,
                                                 addProductToCart:addProductToCart,
                                                 reduceProductInCart:reduceProductInCart,
-                                                removeProductFromCart:removeProductFromCart
+                                                removeProductFromCart:removeProductFromCart,
+                                                currentShippingPrice:currentShippingPrice,
+                                                changeShippingPrice:changeShippingPrice
                                                 }}>
                   {children}
             </CartIndexContext.Provider>
