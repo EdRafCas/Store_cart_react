@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
+import {Link} from "react-router-dom";
 import Logo from './../img/logo-frontpage.png';
 import {
       ContainerHeader,
@@ -13,7 +14,8 @@ import {
       LoginBarButtomcart,
       CartSpan,
       SearchBox} from './../Elements/ElementsHeader';
-      import CartIcon from './../img/shop-cart.png'
+import CartIcon from './../img/shop-cart.png'
+import {ReactComponent as LogoSearch} from "../img/search-icon.svg";
 
 const ImageContainer=styled.div`
 
@@ -24,19 +26,84 @@ const ImageContainer=styled.div`
             width:50%;
             height:auto;
       }
-      `
+`
 
 
+const InputSearch = styled.input`
+      font-size: 14px;
+      text-transform: uppercase;
+      border: 3px solid #000;
+      outline: none;
+      height: auto;
+      text-align:left;
+      white-space:nowrap;
+      overflow:scroll;
 
-const Header = () => {
+
+    @media(max-width: 60rem){
+        
+    }
+`;
+
+const SearchColection=styled(LogoSearch)`
+      height:50%;
+      width:auto;
+      min-height:20px;
+`
+const ContainerIcon=styled(Link)`
+      height:20px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-start;
+      width:auto;
+`
+
+const FormularySearch = styled.form` 
+      width:100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      gap:5px;
+      input {
+            width: 60%;
+            text-align: left;
+            &::placeholder {
+            color: rgba(0,0,0,.2);
+            }
+      }
+`
+
+const Header = (e) => {
+
+      const [inputSearch, changeInputSearch] = useState("");
+     
+
+      const handleChange = (e) =>{
+            if(e.target.name ==="search"){
+                  changeInputSearch(e.target.value)
+                  console.log(inputSearch)
+            }
+      }
+
+
       return ( 
             <ContainerHeader>
                   <UpHeader>
                         <SearchBox>
-                             <form>
-                                   <input placeholder="SEARCH"></input     >
-                                   <buttom>click</buttom>
-                             </form>
+                             <FormularySearch>
+                                   <InputSearch 
+                                          type="text"
+                                          name="search"
+                                          id="search"
+                                          placeholder="Name"
+                                          value={inputSearch}
+                                          onChange={handleChange}>
+
+                                   </InputSearch     >
+                                         <ContainerIcon to="/Search">
+                                                <SearchColection viewBox="598 -476.1 1792 1792"/>
+                                          </ContainerIcon>
+                             </FormularySearch>
                         </SearchBox> 
                         <MainLogo src={Logo} />
                         <LoginBar>

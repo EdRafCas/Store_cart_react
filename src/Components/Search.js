@@ -53,8 +53,8 @@ const OrderByContainer =styled.div`
             }
 `
 
-const Category = (props) => {
-      const {category} =useParams();
+const Search = (props) => {
+      const {search} =useParams();
       let filteredCategory= ProductList.filter(function(items) {
             return items.category=== category
       });
@@ -67,7 +67,7 @@ const Category = (props) => {
                               <Separator>/</Separator>
                               <RedirectButtom to="/Colection">Colection</RedirectButtom>
                               <Separator>/</Separator>
-                              <RedirectButtom to="#">{category}</RedirectButtom>
+                              <RedirectButtom to="#">{search}</RedirectButtom>
                               <Separator>/</Separator>  
                         </DirectionProduct>
                         <OrderByContainer>
@@ -78,7 +78,7 @@ const Category = (props) => {
                   
                   <ImagesContainer>
                               <FilterBar>
-                                    <FilterRoute to="/">{category}</FilterRoute>
+                                    <FilterRoute to="/">{search}</FilterRoute>
                                     
                               </FilterBar>
                               <GalleryContainer>
@@ -116,4 +116,4 @@ const Category = (props) => {
        );
 }
  
-export default Category;
+export default Search;

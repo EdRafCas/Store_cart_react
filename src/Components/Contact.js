@@ -55,8 +55,7 @@ const Formulary = styled.form`
 const Input = styled.input`
     font-size: 12px;
     text-transform: uppercase;
-    border: none;
-    border: 2px solid gray;
+    border: 3px solid #000;
     outline: none;
     height: ${(props) => props.name==="message" ? "150px"
                         : props.name==="email" ? "50px"    
@@ -75,7 +74,7 @@ const TextArea =styled.textarea`
       font-size: 12px;
       text-transform: uppercase;
       border: none;
-      border: 2px solid gray;
+      border: 3px solid #000;
       outline: none;
       height: ${(props) => props.name==="email" ? "50px"    
                         : props.name==="name" ? "50px"    
@@ -239,7 +238,7 @@ const Contact = () => {
             }
       }
       const showValue = (e) => {
-            e.preventDefault();
+            /* e.preventDefault(); */
             console.log(inputName,inputEmail, textMessage)
       }
       return ( 

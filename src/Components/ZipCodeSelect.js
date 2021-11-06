@@ -220,19 +220,19 @@ const [currentZipcodeAddress, changeZipcodeAddress] = useState('Rosario');
 const [shippingMethod, changeshippingMethod] = useState(true);
 const {changeShippingPrice} =useContext(CartIndexContext);
 const {currentShippingPrice} =useContext(CartIndexContext);
-const [tryer, changeTryer] = useState(0);
+const [placeholder, changePlaceHolder] = useState(0);
 
 
 const handleClick = (e) =>{
       changeZipcode(e.currentTarget.dataset.value)
       changeZipcodeAddress(e.currentTarget.dataset.address)
-      changeTryer(parseInt(e.currentTarget.dataset.cost))
+      changePlaceHolder(parseInt(e.currentTarget.dataset.cost))
 };
 
 const handleCalc = () =>{
       changeshippingMethod(!shippingMethod)
-      changeShippingPrice(tryer)
-      console.log(tryer)
+      changeShippingPrice(placeholder)
+      console.log(placeholder)
       
 }
 
@@ -243,16 +243,16 @@ const handleCalcTwo = () =>{
 
 const zipcodes = [
       {id:"Rosario", value:"2000", cost:500},
-      {id:"Cordoba", value:"2001", cost:1000},
-      {id:"Rioja", value:"2002", cost:1500},
-      {id:"San Lorenzo", value:"2003", cost:2500},
-      {id:"Avillaneda", value:"2004", cost:3500},
-      {id:"San Juan", value:"2005", cost:4500},
-      {id:"Bariloche", value:"2006", cost:5500},
-      {id:"Santa Cruz", value:"2007", cost:6500},
-      {id:"Neuquen", value:"2008", cost:7500},
-      {id:"San Luis", value:"2009", cost:8500},
-      {id:"Mendoza", value:"2010", cost:9500}
+      {id:"Cordoba", value:"2001", cost:520},
+      {id:"Rioja", value:"2002", cost:530},
+      {id:"San Lorenzo", value:"2003", cost:580},
+      {id:"Avillaneda", value:"2004", cost:600},
+      {id:"San Juan", value:"2005", cost:650},
+      {id:"Bariloche", value:"2006", cost:700},
+      {id:"Santa Cruz", value:"2007", cost:750},
+      {id:"Neuquen", value:"2008", cost:785},
+      {id:"San Luis", value:"2009", cost:790},
+      {id:"Mendoza", value:"2010", cost:1000}
 ];
 
 
