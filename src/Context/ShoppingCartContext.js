@@ -6,6 +6,7 @@ const CartShopProvider = ({children}) => {
      const [cart, modifyCart] = useState([]);
      const [amountProduct, changeAmountProduct] = useState(1);
      const [currentShippingPrice, changeShippingPrice] = useState(0);
+     const [inputSearch, changeInputSearch] = useState("");
 
 
      const addProductToCart = (idProductToAdd, photoProductToAdd, nameProductToAdd, oldPriceProductToAdd, priceProductToAdd, nametagProductToAdd, altProductToAdd) =>{
@@ -102,7 +103,8 @@ const CartShopProvider = ({children}) => {
                                                 reduceProductInCart:reduceProductInCart,
                                                 removeProductFromCart:removeProductFromCart,
                                                 currentShippingPrice:currentShippingPrice,
-                                                changeShippingPrice:changeShippingPrice
+                                                changeShippingPrice:changeShippingPrice,
+                                                inputSearch:inputSearch, changeInputSearch:changeInputSearch
                                                 }}>
                   {children}
             </CartIndexContext.Provider>

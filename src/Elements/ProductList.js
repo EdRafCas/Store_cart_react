@@ -10,6 +10,7 @@ import Product8 from './../img/product-8.jpg';
  const ProductList =[
       { id: 1,
         src: Product1,
+        color: "Red",
         category: "Pants",
         name: "Red Cargo Pants",
         nametag: "red-cargo-pants",
@@ -18,6 +19,7 @@ import Product8 from './../img/product-8.jpg';
       },
       { id: 2,
         src: Product2,
+        color: "White",
         category: "Headwear",
         name: "White Cap",
         nametag: "white-cap",
@@ -27,6 +29,7 @@ import Product8 from './../img/product-8.jpg';
       },
       { id: 3,
         src: Product3,
+        color: "Black",
         category: "Pants",
         name: "Black Cargo Pants",
         nametag: "black-cargo-pants",
@@ -36,6 +39,7 @@ import Product8 from './../img/product-8.jpg';
       },
       { id: 4,
         src: Product4,
+        color: "Black and white",
         category: "Outfits",
         name: "Black and white outfit",
         nametag: "black-and-white-outfit",
@@ -46,6 +50,7 @@ import Product8 from './../img/product-8.jpg';
       
       { id: 5,
         src: Product5,
+        color: "Purple",
         category: "Pants",
         name: "Purple Cargo Pants",
         nametag: "purple-cargo-pants",
@@ -55,6 +60,7 @@ import Product8 from './../img/product-8.jpg';
       
       { id: 6,
         src: Product6,
+        color: "Black and white",
         category: "Pants",
         name: "Black and white Cargo Pants",
         nametag: "black-and-white-cargo-pants",
@@ -65,6 +71,7 @@ import Product8 from './../img/product-8.jpg';
       
       { id: 7,
         src: Product7,
+        color: "White",
         category: "Outfits",
         name: "White outfit",
         nametag: "white-outfit",
@@ -74,6 +81,7 @@ import Product8 from './../img/product-8.jpg';
       },
       { id: 8,
         src: Product8,
+        color: "Black and white",
         category: "Outfits",
         name: "Cross outfit",
         nametag: "cross-outfit",

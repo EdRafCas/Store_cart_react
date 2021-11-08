@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, {useContext} from 'react';
 import styled from 'styled-components';
 import {Link} from "react-router-dom";
+import {CartIndexContext} from './../Context/ShoppingCartContext'
 import Logo from './../img/logo-frontpage.png';
 import {
       ContainerHeader,
@@ -31,7 +32,7 @@ const ImageContainer=styled.div`
 
 const InputSearch = styled.input`
       font-size: 14px;
-      text-transform: uppercase;
+      /* text-transform: uppercase; */
       border: 3px solid #000;
       outline: none;
       height: auto;
@@ -74,8 +75,8 @@ const FormularySearch = styled.form`
 `
 
 const Header = (e) => {
-
-      const [inputSearch, changeInputSearch] = useState("");
+      const {inputSearch} =useContext(CartIndexContext);
+      const {changeInputSearch} =useContext(CartIndexContext);
      
 
       const handleChange = (e) =>{
@@ -100,7 +101,7 @@ const Header = (e) => {
                                           onChange={handleChange}>
 
                                    </InputSearch     >
-                                         <ContainerIcon to="/Search">
+                                         <ContainerIcon to={`/${inputSearch}`}>
                                                 <SearchColection viewBox="598 -476.1 1792 1792"/>
                                           </ContainerIcon>
                              </FormularySearch>

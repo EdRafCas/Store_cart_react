@@ -53,10 +53,14 @@ const OrderByContainer =styled.div`
             }
 `
 
+
+
 const Search = (props) => {
       const {search} =useParams();
-      let filteredCategory= ProductList.filter(function(items) {
-            return items.category=== category
+      let filteredSearchCriteria= ProductList.filter(function(items) {
+            return items.category.toLocaleLowerCase()=== search.toLocaleLowerCase() ||
+                   items.color.toLocaleLowerCase()=== search.toLocaleLowerCase() || 
+                   items.name.toLocaleLowerCase()=== search.toLocaleLowerCase()
       });
 
       return ( 
@@ -68,7 +72,6 @@ const Search = (props) => {
                               <RedirectButtom to="/Colection">Colection</RedirectButtom>
                               <Separator>/</Separator>
                               <RedirectButtom to="#">{search}</RedirectButtom>
-                              <Separator>/</Separator>  
                         </DirectionProduct>
                         <OrderByContainer>
                               <p>hola</p>
@@ -82,7 +85,7 @@ const Search = (props) => {
                                     
                               </FilterBar>
                               <GalleryContainer>
-                                    {filteredCategory.map((products, index)=>{
+                                    {filteredSearchCriteria.map((products, index)=>{
                                     return(
                                                 <ProductContainer key={index}>
                                                       <ContainerImage>
@@ -102,9 +105,7 @@ const Search = (props) => {
                                                                   <p> <b>6</b> payments of <b>${products.sharePrice}</b>  with no interest</p>
                                                             </CuotesPayment>
                                                       </PaymentsContainer>
-                                                      
                                                 </ProductContainer>
-                                          
                                           )
                                     })} 
                               </GalleryContainer>                          

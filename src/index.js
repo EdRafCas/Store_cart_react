@@ -13,7 +13,7 @@ import Info from './Components/Info';
 import Cart from './Components/Cart';
 import Product from './Components/Product';
 import Category from './Components/CategoryProducts';
-import Search from './Components/CategoryProducts';
+import Search from './Components/Search';
 import {CartShopProvider} from './../src/Context/ShoppingCartContext'
 
 
@@ -46,7 +46,7 @@ const Index = () => {
               <Route path="/Info" exact={true} component={Info}/>
               <Route path="/Cart" exact={true} component={Cart}/> 
               <Route path="/Colection/:category" exact={true} component={Category}/> 
-              <Route path="/Colection/:search" exact={true} component={Search}/> 
+              <Route path="/:search" exact={true} component={Search}/> 
               <Route path="/" exact={true} component={App}/>
               
               <App to="/"/>
