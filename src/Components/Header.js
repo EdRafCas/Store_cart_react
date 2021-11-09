@@ -82,7 +82,7 @@ const Header = (e) => {
       const handleChange = (e) =>{
             if(e.target.name ==="search"){
                   changeInputSearch(e.target.value)
-                  console.log(inputSearch)
+                  /* console.log(inputSearch) */
             }
       }
 
@@ -101,7 +101,7 @@ const Header = (e) => {
                                           onChange={handleChange}>
 
                                    </InputSearch     >
-                                         <ContainerIcon to={`/${inputSearch}`}>
+                                         <ContainerIcon  to={`/${inputSearch}`}>
                                                 <SearchColection viewBox="598 -476.1 1792 1792"/>
                                           </ContainerIcon>
                              </FormularySearch>

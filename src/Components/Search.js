@@ -58,10 +58,13 @@ const OrderByContainer =styled.div`
 const Search = (props) => {
       const {search} =useParams();
       let filteredSearchCriteria= ProductList.filter(function(items) {
-            return items.category.toLocaleLowerCase()=== search.toLocaleLowerCase() ||
-                   items.color.toLocaleLowerCase()=== search.toLocaleLowerCase() || 
-                   items.name.toLocaleLowerCase()=== search.toLocaleLowerCase()
+            return items.category.toLocaleLowerCase().includes(search.toLocaleLowerCase()) ||
+                   items.category.toLocaleLowerCase().includes(search.toLocaleLowerCase()) ||
+                   items.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()) ||
+                   items.nametag.toLocaleLowerCase().includes(search.toLocaleLowerCase()) 
       });
+
+      
 
       return ( 
             <ColectionContainer>
