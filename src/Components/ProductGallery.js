@@ -18,7 +18,7 @@ const ProductGallery = () => {
                         return(
                               <ProductContainer key={index}>
                                     <ContainerImage>
-                                          <img src={products.src} alt={products.altText} width="100%" height="auto" />      
+                                          <img src={products.src} alt={products.alt} width="100%" height="auto" />      
                                     </ContainerImage>
                                     <LinkName to={`/Colection/${products.category}/${products.nametag}`}>
                                           {products.name}

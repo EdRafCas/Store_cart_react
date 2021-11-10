@@ -96,7 +96,7 @@ const Header = (e) => {
                                           type="text"
                                           name="search"
                                           id="search"
-                                          placeholder="Name"
+                                          placeholder="Search"
                                           value={inputSearch}
                                           onChange={handleChange}>
 
