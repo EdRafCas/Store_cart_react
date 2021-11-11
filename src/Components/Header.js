@@ -82,7 +82,7 @@ const Header = (e) => {
       const handleChange = (e) =>{
             if(e.target.name ==="search"){
                   changeInputSearch(e.target.value)
-                  /* console.log(inputSearch) */
+                  console.log(inputSearch)
             }
       }
 

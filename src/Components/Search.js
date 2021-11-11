@@ -1,11 +1,11 @@
-import React,{useState} from 'react';
+import React,{useState, useContext} from 'react';
+import {CartIndexContext} from './../Context/ShoppingCartContext'
 import styled from 'styled-components';
 import {useParams} from  'react-router-dom';
 import { ProductList } from '../Elements/ProductList';
 import {RedirectButtom,
       Separator,
-      DirectionProduct,
-      FilterRoute} from '../Elements/ElementsProductList';
+      DirectionProduct} from '../Elements/ElementsProductList';
 import {GalleryContainer,
       ProductContainer,
       ContainerImage,
@@ -21,7 +21,7 @@ const ImagesContainer = styled.div`
       width: 100%;
       display: grid;
       gap:20px;
-      grid-template-columns: 1fr 4fr;
+      grid-template-columns: 2fr 6fr;
       `
 const FilterBar =styled.div`
       width:100%;
@@ -31,7 +31,7 @@ const FilterBar =styled.div`
       align-items:flex-start;
       gap:100px;
       
-      `
+`
 
 const ColectionContainer =styled.div`
       width: 100%;
@@ -58,7 +58,10 @@ const OrderByContainer =styled.div`
 `
 
 const SearchFilters = styled.div`
+      box-sizing:border-box;
       width:100%;
+      min-width:100%;
+      max-width:100%;
       height:300px;
       border: 1px solid rgba(27, 27, 27, 0.3);
       text-align:center;
@@ -68,9 +71,11 @@ const SearchFilters = styled.div`
       display:flex;
       flex-direction:column;
       align-items:flex-start;
+      gap:20px;
 `
 
-const CurrentSearch =styled.div`
+const CurrentSearch =styled.button`
+      box-sizing:border-box;
       width:auto;
       margin-top:5px;
       border: 1px solid rgba(27, 27, 27, 0.3);
@@ -83,16 +88,25 @@ const CurrentSearch =styled.div`
       display:flex;
       flex-direction:column;
       align-items:flex-start;
-
+      :hover{
+            color:#fff;
+            background:#000000;
+            
+            :active{
+                  border: 3px double #fff;
+                  font-size: 18px;
+                  font-weight: 800;
+            }   
+      }
 `
 const CategoriesContainer=styled.button`
       width:auto;
       margin-top:5px;
-      border: 1px solid rgba(27, 27, 27, 0.3);
+      border: 2px solid rgba(27, 27, 27, 0.3);
       border-radius:10%;
       text-align:center;
       font-weight:800;
-      font-size:18px;
+      font-size:14px;
       padding: 5px 10px;  
       text-transform:uppercase;
       display:flex;
@@ -114,6 +128,10 @@ const CategoriesContainer=styled.button`
 
 const Search = (props) => {
       const {search} =useParams();
+      const [startingSearch, changeStartingSeach] = useState(search);
+      const [startingSearchTwo, changeStartingSeachTwo] = useState(search);
+      console.log(startingSearch, startingSearchTwo)
+
       let filteredSearchCriteria= ProductList.filter(function(items) {
             return items.category.toLocaleLowerCase().includes(search.toLocaleLowerCase()) ||
                    items.category.toLocaleLowerCase().includes(search.toLocaleLowerCase()) ||
@@ -122,42 +140,53 @@ const Search = (props) => {
       });
       
       const [filterCriteria, modifyFilterCriteria] = useState(filteredSearchCriteria);
+      const [filterCriteriaInner, modifyFilterCriteriaInner] = useState(filteredSearchCriteria);
 
       const handleClick = (e) =>{
             if(e.target.name ==="pants"){
-                  modifyFilterCriteria(filteredSearchCriteriaPants)
+                  modifyFilterCriteriaInner(filteredSearchCriteriaPants)
             }
+            if(e.target.name ==="shirts"){
+                  modifyFilterCriteriaInner(filteredSearchCriteriaShirts)
+            }
+            if(e.target.name ==="outfits"){
+                  modifyFilterCriteriaInner(filteredSearchCriteriaOutfits)
+            }
+            if(e.target.name ==="sweaters"){
+                  modifyFilterCriteriaInner(filteredSearchCriteriaSweaters)
+            }
+            if(e.target.name ==="headwear"){
+                  modifyFilterCriteriaInner(filteredSearchCriteriaHeadwear)
+            }
+            if(e.target.name ==="accesories"){
+                  modifyFilterCriteriaInner(filteredSearchCriteriaPants)
+            }
+            if(e.target.name ==="restore search"){
+                  modifyFilterCriteriaInner(filteredSearchCriteria)
+            }
+            console.log(filteredSearchCriteria, filterCriteriaInner)
+            
       }
             
 
       let filteredSearchCriteriaPants= filteredSearchCriteria.filter(function(items) {
-            return items.category.toLocaleLowerCase().includes('Pants'.toLocaleLowerCase())
-            
+            return items.category.toLocaleLowerCase().includes('Pants'.toLocaleLowerCase())   
       });
-      console.log(filteredSearchCriteriaPants)
-
       let filteredSearchCriteriaShirts= filteredSearchCriteria.filter(function(items) {
             return items.category.toLocaleLowerCase().includes('Shirts'.toLocaleLowerCase())
       });
-      console.log(filteredSearchCriteriaShirts)
-
       let filteredSearchCriteriaOutfits= filteredSearchCriteria.filter(function(items) {
             return items.category.toLocaleLowerCase().includes('Outfits'.toLocaleLowerCase())
       });
-      console.log(filteredSearchCriteriaOutfits)
-
       let filteredSearchCriteriaHeadwear= filteredSearchCriteria.filter(function(items) {
             return items.category.toLocaleLowerCase().includes('Headwear'.toLocaleLowerCase())
       });
-      console.log(filteredSearchCriteriaHeadwear)
-      let filteredSearchCriteriaSweater= filteredSearchCriteria.filter(function(items) {
-            return items.category.toLocaleLowerCase().includes('Sweater'.toLocaleLowerCase())
+      let filteredSearchCriteriaSweaters= filteredSearchCriteria.filter(function(items) {
+            return items.category.toLocaleLowerCase().includes('Sweaters'.toLocaleLowerCase())
       });
-      console.log(filteredSearchCriteriaSweater)
       let filteredSearchCriteriaAccesories= filteredSearchCriteria.filter(function(items) {
             return items.category.toLocaleLowerCase().includes('Accesories'.toLocaleLowerCase())
       });
-      console.log(filteredSearchCriteriaAccesories)
 
       
 
@@ -178,27 +207,27 @@ const Search = (props) => {
                   
                   <ImagesContainer>
                               <FilterBar>
-                                    <CurrentSearch>
-                                          {search}
-                                    </CurrentSearch>
+                                    
+                                    <CurrentSearch name="restore search" onClick={handleClick}>{search}</CurrentSearch>
+                                    
                                     <SearchFilters>
                                     {filteredSearchCriteriaPants.length>0 ?
                                           <CategoriesContainer name="pants" onClick={handleClick}>PANTS </CategoriesContainer>
                                     :""}
                                     {filteredSearchCriteriaShirts.length>0 ?
-                                          <CategoriesContainer>SHIRTS </CategoriesContainer>
+                                          <CategoriesContainer name="shirts" onClick={handleClick}>SHIRTS </CategoriesContainer>
                                     :""}
                                     {filteredSearchCriteriaOutfits.length>0 ?
-                                          <CategoriesContainer>OUTFITS </CategoriesContainer>
+                                          <CategoriesContainer name="outfits" onClick={handleClick}>OUTFITS </CategoriesContainer>
                                     :""}
                                     {filteredSearchCriteriaHeadwear.length>0 ?
-                                          <CategoriesContainer>HEADWEAR </CategoriesContainer>
+                                          <CategoriesContainer name="headwear" onClick={handleClick}>HEADWEAR </CategoriesContainer>
                                     :""}
-                                    {filteredSearchCriteriaSweater.length>0 ?
-                                          <CategoriesContainer>SWEATERS </CategoriesContainer>
+                                    {filteredSearchCriteriaSweaters.length>0 ?
+                                          <CategoriesContainer name="sweaters" onClick={handleClick}>SWEATERS</CategoriesContainer>
                                     :""}
                                     {filteredSearchCriteriaAccesories.length>0 ?
-                                          <CategoriesContainer>ACCESORIES </CategoriesContainer>
+                                          <CategoriesContainer name="accesories" onClick={handleClick}>ACCESORIES </CategoriesContainer>
                                     :""}
 
                                     </SearchFilters>
@@ -207,7 +236,8 @@ const Search = (props) => {
                                     
                               </FilterBar>
                               <GalleryContainer>
-                                    {filterCriteria.map((products, index)=>{
+                                    {filterCriteria === filterCriteriaInner ?
+                                    filterCriteria.map((products, index)=>{
                                     let sharePrice = ((products.price*1.1)/6).toFixed(2)
                                     return(
                                                 <ProductContainer key={index}>
@@ -230,7 +260,34 @@ const Search = (props) => {
                                                       </PaymentsContainer>
                                                 </ProductContainer>
                                           )
-                                    })} 
+                                    })
+                                    :
+                                    filterCriteriaInner.map((products, index)=>{
+                                          let sharePrice = ((products.price*1.1)/6).toFixed(2)
+                                          return(
+                                                      <ProductContainer key={index}>
+                                                            <ContainerImage>
+                                                                  <img src={products.src} alt={products.alt} width="100%" height="auto" />      
+                                                            </ContainerImage>
+                                                            <LinkName to={`/Colection/${products.category}/${products.nametag}`}>
+                                                                  {products.name}
+                                                            </LinkName>
+                                                            <PaymentsContainer>
+                                                                  <CashPriceContainer>
+                                                                  {products.oldPrice ?
+                                                                  <PreviousPrice> {products.oldPrice} </PreviousPrice>
+                                                                  :""}
+                                                                  <CurrentPrice>${products.price}</CurrentPrice>
+                                                                  </CashPriceContainer>
+                                                                  <CuotesPayment>
+                                                                        <p> <b>6</b> payments of <b>${sharePrice}</b>  with no interest</p>
+                                                                  </CuotesPayment>
+                                                            </PaymentsContainer>
+                                                      </ProductContainer>
+                                                )
+                                          })
+                                    
+                                    }
                               </GalleryContainer>                          
                   </ImagesContainer>
             </ColectionContainer>
