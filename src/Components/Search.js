@@ -2,7 +2,6 @@ import React,{useState, useContext} from 'react';
 import {CartIndexContext} from './../Context/ShoppingCartContext'
 import styled from 'styled-components';
 import {useParams} from  'react-router-dom';
-import { ProductList } from '../Elements/ProductList';
 import {RedirectButtom,
       Separator,
       DirectionProduct} from '../Elements/ElementsProductList';
@@ -128,19 +127,14 @@ const CategoriesContainer=styled.button`
 
 const Search = (props) => {
       const {search} =useParams();
-      const [startingSearch, changeStartingSeach] = useState(search);
-      const [startingSearchTwo, changeStartingSeachTwo] = useState(search);
-      console.log(startingSearch, startingSearchTwo)
 
-      let filteredSearchCriteria= ProductList.filter(function(items) {
-            return items.category.toLocaleLowerCase().includes(search.toLocaleLowerCase()) ||
-                   items.category.toLocaleLowerCase().includes(search.toLocaleLowerCase()) ||
-                   items.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()) ||
-                   items.nametag.toLocaleLowerCase().includes(search.toLocaleLowerCase()) 
-      });
-      
-      const [filterCriteria, modifyFilterCriteria] = useState(filteredSearchCriteria);
-      const [filterCriteriaInner, modifyFilterCriteriaInner] = useState(filteredSearchCriteria);
+      const {filterCriteria} =useContext(CartIndexContext);
+      const {modifyFilterCriteria} =useContext(CartIndexContext);
+      const {filterCriteriaInner} =useContext(CartIndexContext);
+      const {modifyFilterCriteriaInner} =useContext(CartIndexContext);
+      const {filteredSearchCriteria} =useContext(CartIndexContext);
+       
+
 
       const handleClick = (e) =>{
             if(e.target.name ==="pants"){

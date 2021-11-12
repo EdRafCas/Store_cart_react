@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { ProductList } from '../Elements/ProductList';
 
 const CartIndexContext = React.createContext();
 
@@ -7,6 +8,17 @@ const CartShopProvider = ({children}) => {
      const [amountProduct, changeAmountProduct] = useState(1);
      const [currentShippingPrice, changeShippingPrice] = useState(0);
      const [inputSearch, changeInputSearch] = useState("");
+
+     const filteredSearchCriteria= ProductList.filter(function(items) {
+      return items.category.toLocaleLowerCase().includes(inputSearch.toLocaleLowerCase()) ||
+             items.category.toLocaleLowerCase().includes(inputSearch.toLocaleLowerCase()) ||
+             items.name.toLocaleLowerCase().includes(inputSearch.toLocaleLowerCase()) ||
+             items.nametag.toLocaleLowerCase().includes(inputSearch.toLocaleLowerCase()) 
+      });
+
+      const [filterCriteria, modifyFilterCriteria] = useState([]);
+      const [filterCriteriaInner, modifyFilterCriteriaInner] = useState([]);
+
 
 
      const addProductToCart = (idProductToAdd, photoProductToAdd, nameProductToAdd, oldPriceProductToAdd, priceProductToAdd, nametagProductToAdd, altProductToAdd) =>{
@@ -104,7 +116,15 @@ const CartShopProvider = ({children}) => {
                                                 removeProductFromCart:removeProductFromCart,
                                                 currentShippingPrice:currentShippingPrice,
                                                 changeShippingPrice:changeShippingPrice,
-                                                inputSearch:inputSearch, changeInputSearch:changeInputSearch
+                                                inputSearch:inputSearch, 
+                                                changeInputSearch:changeInputSearch,
+                                                filterCriteria:filterCriteria,
+                                                modifyFilterCriteria:modifyFilterCriteria,
+                                                filterCriteriaInner:filterCriteriaInner,
+                                                modifyFilterCriteriaInner:modifyFilterCriteriaInner,
+                                                filteredSearchCriteria:filteredSearchCriteria
+
+
                                                 }}>
                   {children}
             </CartIndexContext.Provider>
