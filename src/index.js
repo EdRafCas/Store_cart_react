@@ -46,7 +46,7 @@ const Index = () => {
               <Route path="/Info" exact={true} component={Info}/>
               <Route path="/Cart" exact={true} component={Cart}/> 
               <Route path="/Colection/:category" exact={true} component={Category}/> 
-              <Route path="/:search" exact={true} component={Search}/> 
+              <Route path="/Search/:search" exact={true} component={Search}/> 
               <Route path="/" exact={true} component={App}/>
               
               <App to="/"/>

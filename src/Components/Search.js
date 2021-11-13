@@ -1,4 +1,5 @@
 import React,{useState, useContext} from 'react';
+import { ProductList } from '../Elements/ProductList';
 import {CartIndexContext} from './../Context/ShoppingCartContext'
 import styled from 'styled-components';
 import {useParams} from  'react-router-dom';
@@ -127,36 +128,49 @@ const CategoriesContainer=styled.button`
 
 const Search = (props) => {
       const {search} =useParams();
-
+      const {inputSearch} =useContext(CartIndexContext);
       const {filterCriteria} =useContext(CartIndexContext);
       const {modifyFilterCriteria} =useContext(CartIndexContext);
       const {filterCriteriaInner} =useContext(CartIndexContext);
       const {modifyFilterCriteriaInner} =useContext(CartIndexContext);
       const {filteredSearchCriteria} =useContext(CartIndexContext);
-       
+      
+      /* const filteredSearchCriteria= ProductList.filter(function(items) {
+            return items.category.toLocaleLowerCase().includes(search.toLocaleLowerCase()) ||
+                  items.category.toLocaleLowerCase().includes(search.toLocaleLowerCase()) ||
+                  items.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()) ||
+                  items.nametag.toLocaleLowerCase().includes(search.toLocaleLowerCase()) 
+            }); */
+      
+      /* const handleQuery = () =>{
+      } */
+     
+
+      /* const [filterCriteria, modifyFilterCriteria] = useState("");
+      const [filterCriteriaInner, modifyFilterCriteriaInner] = useState(""); */
 
 
       const handleClick = (e) =>{
             if(e.target.name ==="pants"){
-                  modifyFilterCriteriaInner(filteredSearchCriteriaPants)
+                  modifyFilterCriteria(filteredSearchCriteriaPants)
             }
             if(e.target.name ==="shirts"){
-                  modifyFilterCriteriaInner(filteredSearchCriteriaShirts)
+                  modifyFilterCriteria(filteredSearchCriteriaShirts)
             }
             if(e.target.name ==="outfits"){
-                  modifyFilterCriteriaInner(filteredSearchCriteriaOutfits)
+                  modifyFilterCriteria(filteredSearchCriteriaOutfits)
             }
             if(e.target.name ==="sweaters"){
-                  modifyFilterCriteriaInner(filteredSearchCriteriaSweaters)
+                  modifyFilterCriteria(filteredSearchCriteriaSweaters)
             }
             if(e.target.name ==="headwear"){
-                  modifyFilterCriteriaInner(filteredSearchCriteriaHeadwear)
+                  modifyFilterCriteria(filteredSearchCriteriaHeadwear)
             }
             if(e.target.name ==="accesories"){
-                  modifyFilterCriteriaInner(filteredSearchCriteriaPants)
+                  modifyFilterCriteria(filteredSearchCriteriaPants)
             }
             if(e.target.name ==="restore search"){
-                  modifyFilterCriteriaInner(filteredSearchCriteria)
+                  modifyFilterCriteria(filteredSearchCriteria)
             }
             console.log(filteredSearchCriteria, filterCriteriaInner)
             
@@ -192,7 +206,7 @@ const Search = (props) => {
                               <Separator>/</Separator>
                               <RedirectButtom to="/Colection">Colection</RedirectButtom>
                               <Separator>/</Separator>
-                              <RedirectButtom to="#">{search}</RedirectButtom>
+                              <RedirectButtom to="#">{inputSearch}</RedirectButtom>
                         </DirectionProduct>
                         <OrderByContainer>
                               
@@ -202,7 +216,7 @@ const Search = (props) => {
                   <ImagesContainer>
                               <FilterBar>
                                     
-                                    <CurrentSearch name="restore search" onClick={handleClick}>{search}</CurrentSearch>
+                                    <CurrentSearch name="restore search" onClick={handleClick}>{inputSearch}</CurrentSearch>
                                     
                                     <SearchFilters>
                                     {filteredSearchCriteriaPants.length>0 ?
@@ -230,33 +244,7 @@ const Search = (props) => {
                                     
                               </FilterBar>
                               <GalleryContainer>
-                                    {filterCriteria === filterCriteriaInner ?
-                                    filterCriteria.map((products, index)=>{
-                                    let sharePrice = ((products.price*1.1)/6).toFixed(2)
-                                    return(
-                                                <ProductContainer key={index}>
-                                                      <ContainerImage>
-                                                            <img src={products.src} alt={products.alt} width="100%" height="auto" />      
-                                                      </ContainerImage>
-                                                      <LinkName to={`/Colection/${products.category}/${products.nametag}`}>
-                                                            {products.name}
-                                                      </LinkName>
-                                                      <PaymentsContainer>
-                                                            <CashPriceContainer>
-                                                            {products.oldPrice ?
-                                                            <PreviousPrice> {products.oldPrice} </PreviousPrice>
-                                                            :""}
-                                                            <CurrentPrice>${products.price}</CurrentPrice>
-                                                            </CashPriceContainer>
-                                                            <CuotesPayment>
-                                                                  <p> <b>6</b> payments of <b>${sharePrice}</b>  with no interest</p>
-                                                            </CuotesPayment>
-                                                      </PaymentsContainer>
-                                                </ProductContainer>
-                                          )
-                                    })
-                                    :
-                                    filterCriteriaInner.map((products, index)=>{
+                                    {filteredSearchCriteria.map((products, index)=>{
                                           let sharePrice = ((products.price*1.1)/6).toFixed(2)
                                           return(
                                                       <ProductContainer key={index}>
@@ -280,7 +268,6 @@ const Search = (props) => {
                                                       </ProductContainer>
                                                 )
                                           })
-                                    
                                     }
                               </GalleryContainer>                          
                   </ImagesContainer>

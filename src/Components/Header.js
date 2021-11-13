@@ -1,5 +1,6 @@
 import React, {useState, useContext} from 'react';
 import styled from 'styled-components';
+import {useParams} from  'react-router-dom';
 import {Link} from "react-router-dom";
 import {CartIndexContext} from './../Context/ShoppingCartContext'
 import Logo from './../img/logo-frontpage.png';
@@ -78,15 +79,12 @@ const FormularySearch = styled.form`
 `
 
 const Header = (e) => {
+      const {search} =useParams();
       const {inputSearch} =useContext(CartIndexContext);
       const {changeInputSearch} =useContext(CartIndexContext);
-
-      const {filterCriteria} =useContext(CartIndexContext);
-      const {modifyFilterCriteria} =useContext(CartIndexContext);
-      const {filterCriteriaInner} =useContext(CartIndexContext);
-      const {modifyFilterCriteriaInner} =useContext(CartIndexContext);
-      const {filteredSearchCriteria} =useContext(CartIndexContext);
       const [inputHolder, changeInputHolder] = useState("")
+      const {modifyFilterCriteria} =useContext(CartIndexContext);
+      const {filteredSearchCriteria} =useContext(CartIndexContext);
       
       
       const handleChange = (e) =>{
@@ -95,15 +93,10 @@ const Header = (e) => {
                   console.log(inputHolder)
             }
       }
-      const handleSearch = () =>{
-            
+
+      const searchOnClick = ()=>{
             changeInputSearch(inputHolder)
             modifyFilterCriteria(filteredSearchCriteria)
-            modifyFilterCriteriaInner(filteredSearchCriteria)
-            console.log("hello")
-            console.log(filteredSearchCriteria)
-            console.log(filterCriteria)
-            console.log(filterCriteriaInner)
       }
 
 
@@ -123,8 +116,8 @@ const Header = (e) => {
                                    </InputSearch     >
                                          <ContainerIcon
                                           name="redirect"  
-                                          onClick={handleSearch}
-                                          to={`/${inputSearch}`}>
+                                          onClick={searchOnClick}
+                                          to={`/Search/:${inputHolder}`}>
                                                 <SearchColection viewBox="598 -476.1 1792 1792"/>
                                           </ContainerIcon>
                              </FormularySearch>
