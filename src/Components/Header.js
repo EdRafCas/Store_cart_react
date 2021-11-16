@@ -1,6 +1,5 @@
 import React, {useState, useContext} from 'react';
 import styled from 'styled-components';
-import {useParams} from  'react-router-dom';
 import {Link} from "react-router-dom";
 import {CartIndexContext} from './../Context/ShoppingCartContext'
 import Logo from './../img/logo-frontpage.png';
@@ -79,24 +78,22 @@ const FormularySearch = styled.form`
 `
 
 const Header = (e) => {
-      const {search} =useParams();
-      const {inputSearch} =useContext(CartIndexContext);
       const {changeInputSearch} =useContext(CartIndexContext);
       const [inputHolder, changeInputHolder] = useState("")
       const {modifyFilterCriteria} =useContext(CartIndexContext);
-      const {filteredSearchCriteria} =useContext(CartIndexContext);
+
       
       
       const handleChange = (e) =>{
             if(e.target.name ==="search"){
                   changeInputHolder(e.target.value)
-                  console.log(inputHolder)
+                  /* console.log(inputHolder) */
             }
       }
 
       const searchOnClick = ()=>{
+            modifyFilterCriteria("false")
             changeInputSearch(inputHolder)
-            modifyFilterCriteria(filteredSearchCriteria)
       }
 
 
