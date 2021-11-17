@@ -29,6 +29,9 @@ const FilterBar =styled.div`
       justify-content:flex-start;
       align-items:flex-start;
       gap:100px;
+      border-top:1px solid rgba(27, 27, 27, 0.3);
+      padding:20px 0px;  
+      margin: 0px 5px;
       
 `
 
@@ -62,22 +65,25 @@ const SearchFilters = styled.div`
       min-width:100%;
       max-width:100%;
       height:300px;
-      border: 1px solid rgba(27, 27, 27, 0.3);
+      border: none;
       text-align:center;
       font-size:13px;
-      padding: 5px 10px;  
+      padding: 0px; 
       text-transform:uppercase;
       display:flex;
       flex-direction:column;
       align-items:flex-start;
       gap:20px;
+      border-top:1px solid rgba(27, 27, 27, 0.3);
+      margin: 5px 0px;
+      padding:20px 0px;
 `
 
 const CurrentSearch =styled.button`
       box-sizing:border-box;
       width:auto;
       margin-top:5px;
-      border: 1px solid rgba(27, 27, 27, 0.3);
+      border: 2px solid rgba(27, 27, 27, 0.3);
       border-radius:10%;
       text-align:center;
       font-weight:800;
@@ -92,9 +98,9 @@ const CurrentSearch =styled.button`
             background:#000000;
             
             :active{
-                  border: 3px double #fff;
+                  border: 2px double #fff;
                   font-size: 18px;
-                  font-weight: 800;
+                  font-weight: 800;;
             }   
       }
 `
@@ -116,13 +122,27 @@ const CategoriesContainer=styled.button`
             background:#000000;
             
             :active{
-                  border: 3px double #fff;
-                  font-size: 16px;
+                  border: 2px double #fff;
+                  font-size: 14px;
                   font-weight: 800;
             }   
       }
 `
-
+const EmptySearch=styled.div`
+      display:block;
+      grid-column: span 4;
+      box-sizing: border-box;
+      padding: 5px 0;
+      text-align: center;
+      background: none;
+      font-size: 18px;
+      border: 0;
+      border-radius: 0;
+      text-transform: uppercase;
+      text-shadow: none;
+      color: #c09853;
+      margin-bottom: 20px;
+`
 
 
 const Search = (props) => {
@@ -220,7 +240,7 @@ const Search = (props) => {
                                     
                               </FilterBar>
                               <GalleryContainer>
-                                    {filterCriteria==="false"?
+                                    {filterCriteria==="false" && filteredSearchCriteria.length>0?
                                     filteredSearchCriteria.map((products, index)=>{
                                           let sharePrice = ((products.price*1.1)/6).toFixed(2)
                                           return(
@@ -245,6 +265,9 @@ const Search = (props) => {
                                                       </ProductContainer>
                                                 )
                                           })
+                                    :
+                                    filterCriteria==="false" && filteredSearchCriteria.length===0?
+                                    <EmptySearch>It seems your search has no results</EmptySearch>
                                     :
                                     filterCriteria.map((products, index)=>{
                                           let sharePrice = ((products.price*1.1)/6).toFixed(2)

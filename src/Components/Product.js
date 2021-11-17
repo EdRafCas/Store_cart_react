@@ -182,7 +182,7 @@ const Product = (props) => {
                                     </CashPriceContainer>
                                     <PaymentMethodsContainer>
                                           <CuotesPayment>
-                                                <p> <b>6</b> payments of <b>${filteredTagName[0].sharePrice}</b>  with no interest</p>
+                                                <p> <b>6</b> payments of <b>${Number(filteredTagName[0].price*1.1/6).toFixed(2)}</b>  with no interest</p>
                                           </CuotesPayment>
                                     </PaymentMethodsContainer>    
                                     <AddToCartButton onClick={()=>addProductToCart(

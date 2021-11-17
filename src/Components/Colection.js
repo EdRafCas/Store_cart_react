@@ -16,7 +16,12 @@ const FilterBar =styled.div`
       width:100%;
       display:flex;
       flex-direction:column;
-      `
+      justify-content:flex-start;
+      align-items:flex-start;
+      border:none;
+      padding: 5px 10px;
+      gap:20px;  
+`
 
 const ColectionContainer =styled.div`
       width: 100%;
@@ -43,6 +48,7 @@ const OrderByContainer =styled.div`
             }
 `
 
+
 const Colection = () => {
       return ( 
             <ColectionContainer>
@@ -61,11 +67,15 @@ const Colection = () => {
                   
                   <GalleryContainer>
                               <FilterBar>
-                                    {Categories.map((ProductCategories, index) =>{
-                                          return(
-                                          <FilterRoute key={index} to={`/Colection/${ProductCategories}`}>{ProductCategories}</FilterRoute>   
-                                          )
-                                    })}
+                                          {Categories.map((ProductCategories, index) =>{
+                                                return(
+                                                
+                                                      <FilterRoute key={index} to={`/Colection/${ProductCategories}`}>{ProductCategories}</FilterRoute>      
+                                                
+                                                
+                                                )
+                                          })}
+                                    
                               </FilterBar>
                               <ProductGallery/>                            
                   </GalleryContainer>

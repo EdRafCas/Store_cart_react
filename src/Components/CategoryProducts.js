@@ -27,6 +27,11 @@ const FilterBar =styled.div`
       width:100%;
       display:flex;
       flex-direction:column;
+      justify-content:flex-start;
+      align-items:flex-start;
+      border:none;
+      padding: 5px 10px;
+      gap:20px;
       `
 
 const ColectionContainer =styled.div`
@@ -78,7 +83,7 @@ const Category = (props) => {
                   
                   <ImagesContainer>
                               <FilterBar>
-                                    <FilterRoute to="/">{category}</FilterRoute>
+                                    <FilterRoute to="#">{category}</FilterRoute>
                                     
                               </FilterBar>
                               <GalleryContainer>
@@ -99,7 +104,7 @@ const Category = (props) => {
                                                             <CurrentPrice>${products.price}</CurrentPrice>
                                                             </CashPriceContainer>
                                                             <CuotesPayment>
-                                                                  <p> <b>6</b> payments of <b>${products.sharePrice}</b>  with no interest</p>
+                                                                  <p> <b>6</b> payments of <b>${Number((products.price*1.1)/6).toFixed(2)}</b>  with no interest</p>
                                                             </CuotesPayment>
                                                       </PaymentsContainer>
                                                       
