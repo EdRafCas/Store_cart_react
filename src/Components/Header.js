@@ -81,6 +81,9 @@ const Header = (e) => {
       const {changeInputSearch} =useContext(CartIndexContext);
       const [inputHolder, changeInputHolder] = useState("")
       const {modifyFilterCriteria} =useContext(CartIndexContext);
+      const {cart} =useContext(CartIndexContext);
+
+      const amountOfItemsIncart = cart.length;
 
       
       
@@ -128,7 +131,7 @@ const Header = (e) => {
                                                 <img src={CartIcon} alt="Icono" />   
                                           </ImageContainer>
                               </LoginBarButtomcart>
-                              <CartSpan>0</CartSpan>
+                              <CartSpan>{amountOfItemsIncart}</CartSpan>
                               
                         </LoginBar>  
                   </UpHeader>

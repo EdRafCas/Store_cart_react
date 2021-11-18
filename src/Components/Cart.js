@@ -160,6 +160,34 @@ const TotalContainer=styled.div`
       align-items:flex-end;
 `
 
+const CompleteOrder =styled.button`
+      box-sizing: border-box;
+      padding: 8px 12px;
+      background-color: transparent;
+      color: #000000;
+      fill: #000000;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.42857143;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      width:50%;
+      border: 3px solid #000000;
+      :hover{
+            color:#fff;
+            background:#000000;
+            
+            :active{
+                  border: 3px double #fff;
+                  font-size: 16px;
+                  font-weight: 800;
+            }   
+      }
+`
+
 
 
 const Cart = () => {
@@ -236,6 +264,7 @@ const SubtotalSum = cart.reduce((total, currentValue) => total = total + current
                               <TotalContainer>
                                     <SubtotalContainer> SUBTOTAL: ${cart.length > 0 ? Number(SubtotalSum+currentShippingPrice).toFixed(2) : "0,00"}</SubtotalContainer>
                                     <FulllTotal> TOTAL AMOUNT: ${cart.length > 0 ? Number(SubtotalSum+currentShippingPrice).toFixed(2) : "0,00"}</FulllTotal>
+                                    <CompleteOrder>Buy</CompleteOrder>
                               </TotalContainer>
                                     
                         </TwoColumnsContainer>

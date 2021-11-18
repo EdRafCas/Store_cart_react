@@ -186,13 +186,13 @@ const Product = (props) => {
                                           </CuotesPayment>
                                     </PaymentMethodsContainer>    
                                     <AddToCartButton onClick={()=>addProductToCart(
-                                    filteredTagName[0].id,
-                                    filteredTagName[0].src,
-                                    filteredTagName[0].name,
-                                    filteredTagName[0].oldPrice,
-                                    filteredTagName[0].price,
-                                    filteredTagName[0].nametag,
-                                    filteredTagName[0].alt)}>ADD TO CART</AddToCartButton>
+                                          filteredTagName[0].id,
+                                          filteredTagName[0].src,
+                                          filteredTagName[0].name,
+                                          filteredTagName[0].oldPrice,
+                                          filteredTagName[0].price,
+                                          filteredTagName[0].nametag,
+                                          filteredTagName[0].alt)}>ADD TO CART</AddToCartButton>
                               </ShoppingOrder>
                         </InnerContainer>
 

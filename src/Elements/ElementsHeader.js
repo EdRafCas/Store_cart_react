@@ -22,20 +22,36 @@ const NavBar = styled.div`
       flex-direction:row;
       justify-content:center;
       margin:0;
+      
       a{    
             text-decoration:none;
       }
       
 `
 const NavBarButtom =styled(Link)`
-      border-bottom: 1px solid #FFFFFF;
-      font-size:12px;
+      /* border-bottom: 1px solid #FFFFFF; */
+      
+      box-sizing: border-box;
+      font-size:14px;
       display:inline-block;
       color:white;
       width:auto;
-      padding:10px;
+      padding:15px 5px;
       margin: 0.25rem 0.5rem;
       letter-spacing:1px;
+      white-space: nowrap;
+      border: 3px solid #000000;
+      
+      :hover{
+            color:#000000;
+            background:#fff;
+            
+            :active{
+                  border: 3px double #000;
+                  font-size: 14px;
+                  font-weight: 800;
+            }   
+      }
 `
 
 const UpHeader = styled.div`
@@ -93,12 +109,15 @@ const LoginBarButtomcart =styled(Link)`
       
       
 `
-const CartSpan = styled.span`
-      font-size:10px;
+const CartSpan = styled.div`
+      font-size:15px;
       color:#FFFFFF;
       padding:1px 3px;
       background-color: #000000;
       border-radius:50%;
+      width:30px;
+      align-items:center;
+      text-align:center;
 `
 
 const SearchBox =styled.div`

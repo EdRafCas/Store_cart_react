@@ -33,7 +33,16 @@ const CartShopProvider = ({children}) => {
 
      const addProductToCart = (idProductToAdd, photoProductToAdd, nameProductToAdd, oldPriceProductToAdd, priceProductToAdd, nametagProductToAdd, altProductToAdd) =>{
            if(cart.length === 0) {
-                  modifyCart([{id:idProductToAdd, src:photoProductToAdd, name:nameProductToAdd, oldPrice:oldPriceProductToAdd, price:priceProductToAdd, nametag:nametagProductToAdd, alt:altProductToAdd, amount:1, subtotal:priceProductToAdd}])
+                  modifyCart([{
+                        id:idProductToAdd,
+                        src:photoProductToAdd, 
+                        name:nameProductToAdd, 
+                        oldPrice:oldPriceProductToAdd, 
+                        price:priceProductToAdd, 
+                        nametag:nametagProductToAdd, 
+                        alt:altProductToAdd, 
+                        amount:1, 
+                        subtotal:priceProductToAdd}])
                   console.log(cart)
            } else {
                   const newCart = [...cart];
@@ -63,13 +72,14 @@ const CartShopProvider = ({children}) => {
                         newCart.push(
                               {
                                     id:idProductToAdd,
-                                    src:photoProductToAdd,
-                                    name:nameProductToAdd,
-                                    oldPrice:oldPriceProductToAdd,
-                                    price:priceProductToAdd,
-                                    nametag:nametagProductToAdd,
+                                    src:photoProductToAdd, 
+                                    name:nameProductToAdd, 
+                                    oldPrice:oldPriceProductToAdd, 
+                                    price:priceProductToAdd, 
+                                    nametag:nametagProductToAdd, 
                                     alt:altProductToAdd, 
-                                    amount:1
+                                    amount:1, 
+                                    subtotal:priceProductToAdd
                               }
                         )
                   }

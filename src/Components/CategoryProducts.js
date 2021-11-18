@@ -83,7 +83,7 @@ const Category = (props) => {
                   
                   <ImagesContainer>
                               <FilterBar>
-                                    <FilterRoute to="#">{category}</FilterRoute>
+                                    <FilterRoute to="/Colection">{category}</FilterRoute>
                                     
                               </FilterBar>
                               <GalleryContainer>
