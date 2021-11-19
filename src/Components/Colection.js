@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import ProductGallery from './ProductGallery';
 import { Categories } from '../Elements/ProductList';
-
 import {RedirectButtom,Separator,DirectionProduct,FilterRoute} from '../Elements/ElementsProductList';
+import SocialNetworkBar from '../Components/SocialNetworkBar'
 
 
 const GalleryContainer = styled.div`
@@ -79,6 +79,7 @@ const Colection = () => {
                               </FilterBar>
                               <ProductGallery/>                            
                   </GalleryContainer>
+                  <SocialNetworkBar/>
             </ColectionContainer>
             
             

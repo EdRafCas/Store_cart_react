@@ -47,17 +47,7 @@ const HeadBarContainer = styled.div`
       margin:0px;
       padding:0px;
 `
-const OrderByContainer =styled.div`
-      width: 100%;
-      padding:0px;
-      display: flex;
-      flex-direction:row;
-      justify-content:flex-end; 
-      align-items:center;
-      p{
-            margin:0;
-            }
-`
+
 
 const SearchFilters = styled.div`
       box-sizing:border-box;
@@ -202,11 +192,10 @@ const Search = (props) => {
                               <Separator>/</Separator>
                               <RedirectButtom to="/Colection">Colection</RedirectButtom>
                               <Separator>/</Separator>
+                              
                               <RedirectButtom to="#" value={inputSearch}>{inputSearch}</RedirectButtom>
                         </DirectionProduct>
-                        <OrderByContainer>
-                              
-                        </OrderByContainer>      
+                           
                   </HeadBarContainer>
                   
                   <ImagesContainer>

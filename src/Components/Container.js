@@ -8,7 +8,7 @@ const Container = styled.div`
     min-height:80rem;
     overflow-y: auto;
     box-shadow: 0px 1.25rem 2.5rem rgba(0,0,0,.05);
-    border-radius: 0.625rem; /* 10px */
+    border-radius: 0; /* 10px */
     margin: auto;
     display: flex;
     flex-direction: column;

@@ -6,7 +6,7 @@ const GalleryContainer = styled.div`
       display: grid;
       gap: 20px;
       grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
 
       /* grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); */
 `

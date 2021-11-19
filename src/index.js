@@ -17,6 +17,7 @@ import Search from './Components/Search';
 import {CartShopProvider} from './../src/Context/ShoppingCartContext'
 
 
+
 WebFont.load({
   google: {
     families: ['Montserrat', 'sans-serif']
@@ -54,8 +55,6 @@ const Index = () => {
           </ContainerPages>
         </BrowserRouter>
       </CartShopProvider>
-      
-      
     </Container>
       
     

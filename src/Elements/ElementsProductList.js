@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 const RedirectButtom =styled(Link)`
       font-size:16px;
       display:inline-block;
-      width:auto;
+      
       padding:15px 0px 15px 0px;
       text-decoration:none;
       color:#000;

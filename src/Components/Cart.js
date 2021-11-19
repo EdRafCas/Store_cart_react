@@ -4,12 +4,15 @@ import {Link} from 'react-router-dom';
 import ZipCodeSelect from "./ZipCodeSelect";
 import {ReactComponent as LogoTrash} from "../img/trash-icon.svg";
 import {CartIndexContext} from './../Context/ShoppingCartContext'
+import SocialNetworkBar from '../Components/SocialNetworkBar'
 
 const CartShopContainer= styled.div`
       width:100%;
+
       height: auto;
       display:flex;
       flex-direction:column;
+      justify-content:flex-start;
       padding:5px;
 `
 const Headline=styled.div`
@@ -33,6 +36,7 @@ const Title = styled.h4`
       text-transform:uppercase;
 `
 const ProductsInCart=styled.div`
+      min-height:60vh;
       display:flex;
       flex-direction:column;
 `
@@ -269,7 +273,7 @@ const SubtotalSum = cart.reduce((total, currentValue) => total = total + current
                                     
                         </TwoColumnsContainer>
                   :""}
-                  
+            <SocialNetworkBar/>      
             </CartShopContainer>
        );
 }

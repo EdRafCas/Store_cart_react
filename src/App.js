@@ -3,6 +3,7 @@ import SliderCarousel from './Elements/SliderCarousel'
 import Banner from './Elements/Banner';
 import WebBanner from './Elements/WebBanner';
 import ProductGallery from './Components/ProductGallery';
+import SocialNetworkBar from './Components/SocialNetworkBar'
 
 import styled from "styled-components";
 
@@ -30,6 +31,7 @@ const App = () => {
       <Banner/>
       <WebBanner/>
       <ProductGallery/>
+      <SocialNetworkBar/>
     </MainPage>
     
     
