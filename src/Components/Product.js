@@ -1,9 +1,11 @@
-import React,{useContext} from 'react';
+import React,{useContext, useState} from 'react';
 import {useParams} from  'react-router-dom';
 import styled from 'styled-components';
 import {ProductList} from './../Elements/ProductList';
 import {RedirectButtom,Separator, DirectionProduct}  from './../Elements/ElementsProductList'
 import {CartIndexContext} from '../Context/ShoppingCartContext';
+import Alert from '../Components/Alert';
+
 
 const ContainerProductPage=styled.div`
       display:flex;
@@ -133,21 +135,35 @@ const AddToCartButton=styled.button`
             }   
       }
 `
+
+const Form =styled.form`
+      width:100%;
+      button{
+            width:100%;
+      }
+`
                   
 const Product = (props) => {
       const {nametag} =useParams();
+      const [alert, changeAlert] = useState({})
       const {addProductToCart} =useContext(CartIndexContext);
+      const {addProductToCartTest} =useContext(CartIndexContext);
       var filteredTagName = ProductList.filter(function(items) {
             return items.nametag === nametag
       });
+      
       
       /* console.log(nametag);
       console.log(ProductList);
       console.log(filteredTagName); */
 
+      
+
       return ( 
       <>
             { filteredTagName ?
+            <>
+            
                   <ContainerProductPage>
                         <DirectionProduct>
                               <RedirectButtom to="/"> Main</RedirectButtom> 
@@ -184,20 +200,37 @@ const Product = (props) => {
                                           <CuotesPayment>
                                                 <p> <b>6</b> payments of <b>${Number(filteredTagName[0].price*1.1/6).toFixed(2)}</b>  with no interest</p>
                                           </CuotesPayment>
-                                    </PaymentMethodsContainer>    
-                                    <AddToCartButton onClick={()=>addProductToCart(
+                                    </PaymentMethodsContainer>
+                                    <Form onSubmit={addProductToCartTest(
                                           filteredTagName[0].id,
                                           filteredTagName[0].src,
                                           filteredTagName[0].name,
                                           filteredTagName[0].oldPrice,
                                           filteredTagName[0].price,
                                           filteredTagName[0].nametag,
-                                          filteredTagName[0].alt)}>ADD TO CART</AddToCartButton>
+                                          filteredTagName[0].alt)}>
+
+                                         
+                                         <AddToCartButton as="button" type="submit">ADD TO CART</AddToCartButton> 
+                                    </Form>   
+                                          <AddToCartButton type="submit" onClick={()=>addProductToCart(
+                                          filteredTagName[0].id,
+                                          filteredTagName[0].src,
+                                          filteredTagName[0].name,
+                                          filteredTagName[0].oldPrice,
+                                          filteredTagName[0].price,
+                                          filteredTagName[0].nametag,
+                                          filteredTagName[0].alt)}>ADD TO CART</AddToCartButton>  
+                                    
                               </ShoppingOrder>
                         </InnerContainer>
 
 
                   </ContainerProductPage>
+                  <Alert
+                  alert={alert}
+                  changeAlert={changeAlert}/>
+            </>
             :
             ""
             }

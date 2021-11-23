@@ -123,6 +123,63 @@ const CartShopProvider = ({children}) => {
                   console.log("remove failed");
            }
      };
+     const addProductToCartTest =(idProductToAdd, photoProductToAdd, nameProductToAdd, oldPriceProductToAdd, priceProductToAdd, nametagProductToAdd, altProductToAdd) => (e) =>{
+      e.preventDefault();
+      if(cart.length === 0) {
+             modifyCart([{
+                   id:idProductToAdd,
+                   src:photoProductToAdd, 
+                   name:nameProductToAdd, 
+                   oldPrice:oldPriceProductToAdd, 
+                   price:priceProductToAdd, 
+                   nametag:nametagProductToAdd, 
+                   alt:altProductToAdd, 
+                   amount:1, 
+                   subtotal:priceProductToAdd}])
+             console.log(cart)
+      } else {
+             const newCart = [...cart];
+             const alreadyInCart = newCart.filter((productInCart)=>{
+                   return productInCart.id === idProductToAdd}).length > 0;
+
+             if(alreadyInCart){
+                   newCart.forEach((productInCart, index) =>{
+                         if(productInCart.id=== idProductToAdd){
+                               const amount = newCart[index].amount
+                               newCart[index] ={
+                                     id:idProductToAdd,
+                                     src:photoProductToAdd,
+                                     name:nameProductToAdd,
+                                     oldPrice:oldPriceProductToAdd,
+                                     price:priceProductToAdd,
+                                     nametag:nametagProductToAdd,
+                                     alt:altProductToAdd,
+                                     amount:amount+1,
+                                     subtotal: (amount+1)*priceProductToAdd
+                               }
+                         }
+                   });
+             
+
+             } else {
+                   newCart.push(
+                         {
+                               id:idProductToAdd,
+                               src:photoProductToAdd, 
+                               name:nameProductToAdd, 
+                               oldPrice:oldPriceProductToAdd, 
+                               price:priceProductToAdd, 
+                               nametag:nametagProductToAdd, 
+                               alt:altProductToAdd, 
+                               amount:1, 
+                               subtotal:priceProductToAdd
+                         }
+                   )
+             }
+             modifyCart(newCart);
+             console.log(cart)
+      }
+};
 
 
 
@@ -143,7 +200,8 @@ const CartShopProvider = ({children}) => {
                                                 modifyFilterCriteria:modifyFilterCriteria,
                                                 filterCriteriaInner:filterCriteriaInner,
                                                 modifyFilterCriteriaInner:modifyFilterCriteriaInner,
-                                                filteredSearchCategory:filteredSearchCategory
+                                                filteredSearchCategory:filteredSearchCategory,
+                                                addProductToCartTest:addProductToCartTest
                                                 }}>
                   {children}
             </CartIndexContext.Provider>
