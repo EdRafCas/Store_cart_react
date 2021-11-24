@@ -232,7 +232,7 @@ const handleClick = (e) =>{
 const handleCalc = () =>{
       changeshippingMethod(!shippingMethod)
       changeShippingPrice(placeholder)
-      console.log(placeholder)
+      /* console.log(placeholder) */
       
 }
 

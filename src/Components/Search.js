@@ -1,6 +1,7 @@
 import React,{useContext} from 'react';
 import {CartIndexContext} from './../Context/ShoppingCartContext'
 import styled from 'styled-components';
+import SocialNetworkBar from '../Components/SocialNetworkBar'
 
 import {RedirectButtom,
       Separator,
@@ -285,6 +286,7 @@ const Search = (props) => {
                                     }
                               </GalleryContainer>                          
                   </ImagesContainer>
+                  <SocialNetworkBar/>
             </ColectionContainer>
             
             

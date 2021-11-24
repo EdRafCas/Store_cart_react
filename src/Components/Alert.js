@@ -1,4 +1,5 @@
-import React, {useEffect} from 'react';
+import React, {useContext, useEffect} from 'react';
+import {CartIndexContext} from '../Context/ShoppingCartContext';
 import styled, {keyframes} from 'styled-components';
 
 const slideDown = keyframes`
@@ -45,13 +46,16 @@ const ContainerAlert = styled.div`
       
 `
 
-const Alert = ({alert, changeAlert}) => {
+const Alert = () => {
+      const {alert} =useContext(CartIndexContext);
+      const {changeAlert} =useContext(CartIndexContext);
+
       useEffect(()=>{
             let time;
             if(alert ===true){
                   time= setTimeout(()=>{
                         changeAlert(false);
-                  }, 4000)
+                  }, 2000)
             }
             return(()=> clearTimeout(time))
       }, [alert, changeAlert]);

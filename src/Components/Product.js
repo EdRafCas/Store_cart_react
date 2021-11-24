@@ -1,4 +1,4 @@
-import React,{useContext, useState} from 'react';
+import React,{useContext} from 'react';
 import {useParams} from  'react-router-dom';
 import styled from 'styled-components';
 import {ProductList} from './../Elements/ProductList';
@@ -145,9 +145,7 @@ const Form =styled.form`
                   
 const Product = (props) => {
       const {nametag} =useParams();
-      const [alert, changeAlert] = useState({})
       const {addProductToCart} =useContext(CartIndexContext);
-      const {addProductToCartTest} =useContext(CartIndexContext);
       var filteredTagName = ProductList.filter(function(items) {
             return items.nametag === nametag
       });
@@ -157,7 +155,7 @@ const Product = (props) => {
       console.log(ProductList);
       console.log(filteredTagName); */
 
-      
+
 
       return ( 
       <>
@@ -201,7 +199,7 @@ const Product = (props) => {
                                                 <p> <b>6</b> payments of <b>${Number(filteredTagName[0].price*1.1/6).toFixed(2)}</b>  with no interest</p>
                                           </CuotesPayment>
                                     </PaymentMethodsContainer>
-                                    <Form onSubmit={addProductToCartTest(
+                                    <Form onSubmit={addProductToCart(
                                           filteredTagName[0].id,
                                           filteredTagName[0].src,
                                           filteredTagName[0].name,
@@ -213,23 +211,13 @@ const Product = (props) => {
                                          
                                          <AddToCartButton as="button" type="submit">ADD TO CART</AddToCartButton> 
                                     </Form>   
-                                          <AddToCartButton type="submit" onClick={()=>addProductToCart(
-                                          filteredTagName[0].id,
-                                          filteredTagName[0].src,
-                                          filteredTagName[0].name,
-                                          filteredTagName[0].oldPrice,
-                                          filteredTagName[0].price,
-                                          filteredTagName[0].nametag,
-                                          filteredTagName[0].alt)}>ADD TO CART</AddToCartButton>  
                                     
                               </ShoppingOrder>
                         </InnerContainer>
 
 
                   </ContainerProductPage>
-                  <Alert
-                  alert={alert}
-                  changeAlert={changeAlert}/>
+                  <Alert/>
             </>
             :
             ""

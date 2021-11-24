@@ -10,6 +10,7 @@ const CartShopProvider = ({children}) => {
      const [amountProduct, changeAmountProduct] = useState(1);
      const [currentShippingPrice, changeShippingPrice] = useState(0);
      const [inputSearch, changeInputSearch] = useState("Search");
+     
 
      var filteredSearchCriteria= ProductList.filter(function(items) {
             return items.category.toLocaleLowerCase().includes(inputSearch.toLocaleLowerCase()) ||
@@ -27,12 +28,12 @@ const CartShopProvider = ({children}) => {
       const [filterCriteria, modifyFilterCriteria] = useState("false")
 
       const [filterCriteriaInner, modifyFilterCriteriaInner] = useState(filteredSearchCriteria);
-     
+      const [alert, changeAlert] = useState(false)
 
 
-
-     const addProductToCart = (idProductToAdd, photoProductToAdd, nameProductToAdd, oldPriceProductToAdd, priceProductToAdd, nametagProductToAdd, altProductToAdd) =>{
-           if(cart.length === 0) {
+     const addProductToCart =(idProductToAdd, photoProductToAdd, nameProductToAdd, oldPriceProductToAdd, priceProductToAdd, nametagProductToAdd, altProductToAdd) => (e) =>{
+      e.preventDefault();
+            if(cart.length === 0) {
                   modifyCart([{
                         id:idProductToAdd,
                         src:photoProductToAdd, 
@@ -42,9 +43,11 @@ const CartShopProvider = ({children}) => {
                         nametag:nametagProductToAdd, 
                         alt:altProductToAdd, 
                         amount:1, 
-                        subtotal:priceProductToAdd}])
+                        subtotal:priceProductToAdd}]);
+                        changeAlert(true)
+                                    
                   console.log(cart)
-           } else {
+            } else {
                   const newCart = [...cart];
                   const alreadyInCart = newCart.filter((productInCart)=>{
                         return productInCart.id === idProductToAdd}).length > 0;
@@ -81,12 +84,14 @@ const CartShopProvider = ({children}) => {
                                     amount:1, 
                                     subtotal:priceProductToAdd
                               }
-                        )
+                        );
+                        
                   }
                   modifyCart(newCart);
+                  changeAlert(true);
                   console.log(cart)
-           }
-     };
+            }
+};
 
       const reduceProductInCart = (idProductToAdd, photoProductToAdd, nameProductToAdd, oldPriceProductToAdd, priceProductToAdd, nametagProductToAdd, altProductToAdd, amountProductToAdd) =>{
       if(amountProductToAdd >=1){
@@ -123,63 +128,7 @@ const CartShopProvider = ({children}) => {
                   console.log("remove failed");
            }
      };
-     const addProductToCartTest =(idProductToAdd, photoProductToAdd, nameProductToAdd, oldPriceProductToAdd, priceProductToAdd, nametagProductToAdd, altProductToAdd) => (e) =>{
-      e.preventDefault();
-      if(cart.length === 0) {
-             modifyCart([{
-                   id:idProductToAdd,
-                   src:photoProductToAdd, 
-                   name:nameProductToAdd, 
-                   oldPrice:oldPriceProductToAdd, 
-                   price:priceProductToAdd, 
-                   nametag:nametagProductToAdd, 
-                   alt:altProductToAdd, 
-                   amount:1, 
-                   subtotal:priceProductToAdd}])
-             console.log(cart)
-      } else {
-             const newCart = [...cart];
-             const alreadyInCart = newCart.filter((productInCart)=>{
-                   return productInCart.id === idProductToAdd}).length > 0;
-
-             if(alreadyInCart){
-                   newCart.forEach((productInCart, index) =>{
-                         if(productInCart.id=== idProductToAdd){
-                               const amount = newCart[index].amount
-                               newCart[index] ={
-                                     id:idProductToAdd,
-                                     src:photoProductToAdd,
-                                     name:nameProductToAdd,
-                                     oldPrice:oldPriceProductToAdd,
-                                     price:priceProductToAdd,
-                                     nametag:nametagProductToAdd,
-                                     alt:altProductToAdd,
-                                     amount:amount+1,
-                                     subtotal: (amount+1)*priceProductToAdd
-                               }
-                         }
-                   });
-             
-
-             } else {
-                   newCart.push(
-                         {
-                               id:idProductToAdd,
-                               src:photoProductToAdd, 
-                               name:nameProductToAdd, 
-                               oldPrice:oldPriceProductToAdd, 
-                               price:priceProductToAdd, 
-                               nametag:nametagProductToAdd, 
-                               alt:altProductToAdd, 
-                               amount:1, 
-                               subtotal:priceProductToAdd
-                         }
-                   )
-             }
-             modifyCart(newCart);
-             console.log(cart)
-      }
-};
+     
 
 
 
@@ -201,7 +150,8 @@ const CartShopProvider = ({children}) => {
                                                 filterCriteriaInner:filterCriteriaInner,
                                                 modifyFilterCriteriaInner:modifyFilterCriteriaInner,
                                                 filteredSearchCategory:filteredSearchCategory,
-                                                addProductToCartTest:addProductToCartTest
+                                                alert:alert,
+                                                changeAlert:changeAlert
                                                 }}>
                   {children}
             </CartIndexContext.Provider>

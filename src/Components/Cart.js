@@ -150,6 +150,7 @@ const TwoColumnsContainer=styled.div`
       display:grid;
       grid-template-columns: repeat(1, 1fr 1fr);
       margin:30px 0px;
+      padding-bottom:200px;
 `
 
 const FulllTotal=styled.div`
@@ -239,7 +240,7 @@ const SubtotalSum = cart.reduce((total, currentValue) => total = total + current
                                                                                                 productsInCart.amount
                                                                                                 )}>-</ReduceButton>
                                                       <AmountToBuy>{productsInCart.amount}</AmountToBuy>
-                                                      <IncreaseButton name="Increase" onClick={()=>addProductToCart(
+                                                      <IncreaseButton name="Increase" onClick={addProductToCart(
                                                                                                 productsInCart.id,
                                                                                                 productsInCart.src,
                                                                                                 productsInCart.name,
