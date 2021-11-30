@@ -18,6 +18,10 @@ const ContainerWebBanner = styled.div`
             margin:0;
 
       }
+      @media(max-width: 600px){ 
+        display:none;
+           
+    }
 `
 
 const WebBanner = () => {

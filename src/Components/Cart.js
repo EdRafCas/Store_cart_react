@@ -88,8 +88,6 @@ const ProductCuantity=styled.div`
       display:flex;
       flex-direction:row;
       justify-content:flex-start;
-
-
 `
 const ReduceButton =styled.button`
       padding:0px 5px;
@@ -151,6 +149,11 @@ const TwoColumnsContainer=styled.div`
       grid-template-columns: repeat(1, 1fr 1fr);
       margin:30px 0px;
       padding-bottom:200px;
+      @media(max-width: 720px){ 
+            padding-bottom:000px;;
+           
+    }
+      
 `
 
 const FulllTotal=styled.div`

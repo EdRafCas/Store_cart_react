@@ -1,8 +1,5 @@
 import React,{useState} from 'react';
 import styled from "styled-components";
-import {RedirectButtom,
-      Separator,
-      DirectionProduct} from '../Elements/ElementsProductList';
 import {ReactComponent as LogoPhone} from "../img/phone-icon.svg";
 import {ReactComponent as LogoEmail} from "../img/email-icon.svg";
 import {ReactComponent as LogoAddress} from "../img/address-icon.svg";
@@ -10,16 +7,15 @@ import SocialNetworkBar from '../Components/SocialNetworkBar'
 
 const ContainerContact= styled.div`
       width:100%;
-      display:grid;
-      grid-template-columns: repeat(1, 1fr);
-      justify-items:start;
-`
-const HeadBarContainer = styled.div`
+      gap:50px;
       display:flex;
-      flex-direction:row;
-      justify-content:flex-start;
-      margin:0px;
-      padding:0px;
+      flex-direction:column;
+      gap:auto;
+      justify-content:space-between;
+      @media(max-width: 720px){
+            width:95%;
+        
+    }
 `
 const ContainerColumns =styled.div`
       width:100%;
@@ -44,10 +40,6 @@ const Formulary = styled.form`
         &::placeholder {
             color: rgba(0,0,0,.2);
         }
-    }
- 
-    @media(max-width: 60rem){ /* 950px */
-        justify-content: start;
     }
 `;
 
@@ -194,14 +186,7 @@ const Contact = () => {
       }
       return ( 
             <ContainerContact>
-                  <HeadBarContainer>
-                        <DirectionProduct>
-                              <RedirectButtom to="/">Main</RedirectButtom>
-                              <Separator>/</Separator>
-                              <RedirectButtom to="/Contact">Contact</RedirectButtom>
-                              <Separator>/</Separator>
-                        </DirectionProduct>   
-                  </HeadBarContainer>
+                  
                   <ContainerColumns>
                         <AddressContainer>
                               <ContactInfoContainer>

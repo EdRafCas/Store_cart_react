@@ -8,15 +8,17 @@ const ContainerBanner = styled.div`
       align-items:center;
       width:100%;
       margin-top:80px;
-      
       p{
             font-size:24px;
             text-transform: uppercase;
             text-align:center;
             font-weight:700;
             color: #535353;
-
       }
+      @media(max-width: 600px){ 
+        display:none;
+           
+    }
 `
 
 const Banner = () => {

@@ -2,11 +2,19 @@ import styled from 'styled-components';
 import {Link} from "react-router-dom";
 
 const GalleryContainer = styled.div`
+      margin-top:20px;
       width: 100%;
       display: grid;
       gap: 20px;
       grid-template-columns: repeat(4, 1fr);
       grid-template-rows: repeat(2, 1fr);
+
+      @media(max-width: 720px){ 
+      width:95%;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+           
+    }
 
       /* grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); */
 `
