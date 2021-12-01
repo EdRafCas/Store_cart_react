@@ -60,8 +60,7 @@ const Colection = () => {
                               <Separator>/</Separator>  
                         </DirectionProduct>
                         <OrderByContainer>
-                              <p>hola</p>
-                              <p>hola</p>
+                              
                         </OrderByContainer>      
                   </HeadBarContainer>
                   

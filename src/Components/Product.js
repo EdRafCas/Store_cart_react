@@ -12,13 +12,22 @@ const ContainerProductPage=styled.div`
       width:100%;
       flex-direction:column;
       padding-top:5px;
+      @media(max-width: 720px){
+            width:95%;
+        
+      }
 
 `
 const InnerContainer=styled.div`
       width:100%;
       display: grid;
-      gap:00px;
+      gap:0px;
       grid-template-columns: repeat(2, 1fr);
+      @media(max-width: 600px){
+            grid-template-columns: repeat(1, 1fr);
+            grid-template-rows: repeat(1, 1fr);
+      }
+      
 
 `
 const ProductDisplay=styled.div`
@@ -26,7 +35,11 @@ const ProductDisplay=styled.div`
       display: grid;
       gap:10px;
       grid-template-columns: 1fr 4fr;
-      grid-template-rows: 1fr 1fr;
+      @media(max-width: 600px){
+            grid-template-columns: repeat(1, 1fr);
+            grid-template-rows: repeat(1, 1fr);
+      }
+      
 `
 const SmallPhotos=styled.div`
       width: 100%;
@@ -39,6 +52,10 @@ const SmallPhotos=styled.div`
             height:auto;
             min-width:95px;
       }
+      @media(max-width: 720px){
+            display:none;
+        
+    }
 `
 
 const BigPhoto=styled.div`
