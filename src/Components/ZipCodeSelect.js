@@ -40,6 +40,7 @@ const RetireAtLocal =styled.div`
             margin-left:15px;
             margin-bottom:0px;
             height:auto;}
+      
 `
 
 const IconStore= styled(LogoStore)`
@@ -58,9 +59,14 @@ const AdressContainer=styled.div`
       cursor: pointer;
       font-size: 16px;
       padding: 20px 15px;
+      
 `
 
 const Address=styled.span`
+      @media(max-width: 720px){
+                  font-size: 12px;
+            
+      }
 
 `
 
@@ -144,6 +150,9 @@ const CalculateShipping =styled.button`
                   font-weight: 800;
             }   
       }
+      @media(max-width: 600px){ 
+            font-size:14px;;   
+    }
 `
 const ChangeShipping =styled.button`
       width:70%;

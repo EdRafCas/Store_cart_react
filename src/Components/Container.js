@@ -27,6 +27,11 @@ const Container = styled.div`
         min-width:600px;
            
     }
+    @media(max-width: 400px){ 
+        width: 100%;
+        min-width:400px;
+           
+    }
  
 `;
 

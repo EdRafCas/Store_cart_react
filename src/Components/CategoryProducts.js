@@ -46,17 +46,6 @@ const HeadBarContainer = styled.div`
       margin:0px;
       padding:0px;
 `
-const OrderByContainer =styled.div`
-      width: 100%;
-      padding:0px;
-      display: flex;
-      flex-direction:row;
-      justify-content:flex-end; 
-      align-items:center;
-      p{
-            margin:0;
-            }
-`
 
 const Category = (props) => {
       const {category} =useParams();
@@ -75,10 +64,6 @@ const Category = (props) => {
                               <RedirectButtom to="#">{category}</RedirectButtom>
                               <Separator>/</Separator>  
                         </DirectionProduct>
-                        <OrderByContainer>
-                              <p>hola</p>
-                              <p>hola</p>
-                        </OrderByContainer>      
                   </HeadBarContainer>
                   
                   <ImagesContainer>

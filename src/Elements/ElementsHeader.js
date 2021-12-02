@@ -31,8 +31,12 @@ const NavBar = styled.div`
       @media(max-width: 720px){ /* 950px */
         width: 100%;
         min-width:600px;
-           
     }
+      @media(max-width: 400px){ 
+            width: 100%;
+            min-width:400px;
+            
+      }
       
 `
 const NavBarButtom =styled(Link)`
@@ -60,6 +64,24 @@ const NavBarButtom =styled(Link)`
                   font-weight: 800;
             }   
       }
+      @media(max-width: 400px){ 
+            font-size:12px;
+            padding:10px 2px;
+           
+            :hover{
+            color:#000000;
+            background:#fff;
+            
+                  :active{
+                        border: 3px double #000;
+                        font-size: 12px;
+                        font-weight: 800;
+                  }   
+      }
+    }
+
+     
+ 
 `
 
 const UpHeader = styled.div`
@@ -70,12 +92,12 @@ const UpHeader = styled.div`
       display:grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 0;
-      @media(max-width: 720px){ 
-      height:100px;
-      width:100%;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0;
-      font-size:24px;
+            @media(max-width: 720px){ 
+            height:100px;
+            width:100%;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0;
+            font-size:24px;
            
     }
 `
@@ -106,17 +128,19 @@ const LoginBar = styled.div`
         justify-content:center;
            
     }
+    
 
 `
 const LoginBarButtomLeft =styled(Link)`
-      display:inline-block;
+      display:none;/* display:inline-block; */
       color:#000000;
       width:auto;
       padding:0px 5px 0px 0px;
       border-right: 1px solid rgba(0, 0, 0, 0.2);
+      
 `
 const LoginBarButtomRight =styled(Link)`
-      display:inline-block;
+      display:none;/* display:inline-block; */
       color:#000000;
       width:auto;
       padding:0px 0px 0px 5px;

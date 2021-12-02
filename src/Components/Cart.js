@@ -141,6 +141,13 @@ const EmptyCart=styled.div`
 const SubtotalContainer=styled.div`
       font-size:16px;
       font-weight:600;
+      text-align:right;
+      @media(max-width: 600px){ 
+            font-size:14px;;   
+    }
+      @media(max-width: 400px){ 
+                  font-size:12px;  
+      }
 `
 
 const TwoColumnsContainer=styled.div`
@@ -150,8 +157,7 @@ const TwoColumnsContainer=styled.div`
       margin:30px 0px;
       padding-bottom:200px;
       @media(max-width: 720px){ 
-            padding-bottom:000px;;
-           
+            padding-bottom:000px;;  
     }
       
 `
@@ -159,6 +165,14 @@ const TwoColumnsContainer=styled.div`
 const FulllTotal=styled.div`
       font-size:18px;
       font-weight:800;
+      text-align:right;
+      @media(max-width: 600px){ 
+            font-size:14px;
+    }
+    @media(max-width: 400px){ 
+            font-size:12px;  
+    }
+
 `
 
 const TotalContainer=styled.div`
@@ -194,6 +208,9 @@ const CompleteOrder =styled.button`
                   font-weight: 800;
             }   
       }
+      @media(max-width: 600px){ 
+            font-size:14px;;   
+    }
 `
 
 

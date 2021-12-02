@@ -23,6 +23,10 @@ const ContainerColumns =styled.div`
       grid-template-columns: repeat(1, 3fr 2fr);
       justify-items:center;
       margin:30px 0px;
+      @media(max-width: 720px){
+            grid-template-columns: repeat(1,1fr);
+        
+    }
 `
 const AddressContainer =styled.div`
       width:100%;
@@ -55,11 +59,6 @@ const Input = styled.input`
       text-align:left;
       white-space:nowrap;
       overflow:scroll;
-
-
-    @media(max-width: 60rem){
-        
-    }
 `;
 const TextArea =styled.textarea`
       font-size: 12px;
@@ -74,16 +73,16 @@ const TextArea =styled.textarea`
       white-space:normal;
       overflow:scroll;
 
-
-    @media(max-width: 60rem){
-        
-    }
 `
 
 const Label=styled.label`
       text-transform:uppercase;
       font-weight:800;
       font-size:16px;
+      @media(max-width: 720px){
+            text-align:center;
+        
+    }
 `
 const ContactButton=styled.button`
       box-sizing: border-box;
@@ -136,7 +135,10 @@ const ContactInfoContainer =styled.div`
             display:block;
             text-transform:uppercase;
       }
-
+      @media(max-width: 720px){
+            text-align:center;
+        
+    }
 `
 const IconPhone = styled(LogoPhone)`
       width:20px;
@@ -206,8 +208,7 @@ const Contact = () => {
                                     <Frame src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d836.9623409655084!2d-60.64123339797852!3d-32.95498625513741!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sar!4v1622504850237!5m2!1ses!2sar"></Frame>
                               </ContainerMap>
                         </AddressContainer>
-                        
-                              <Formulary>
+                        <Formulary>
                                     <Label>Name</Label>
                                     <Input
                                           type="text"
@@ -238,7 +239,7 @@ const Contact = () => {
                                           onChange={handleChange}
                                     />
                                     <ContactButton type="submit" onClick={showValue}>SEND</ContactButton>
-                              </Formulary>
+                        </Formulary>
                         
                   </ContainerColumns>
                   <SocialNetworkBar/>
