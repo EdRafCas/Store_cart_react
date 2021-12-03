@@ -22,9 +22,6 @@ const NavBar = styled.div`
       flex-direction:row;
       justify-content:center;
       margin:0;
-
-      
-      
       a{    
             text-decoration:none;
       }
@@ -79,9 +76,6 @@ const NavBarButtom =styled(Link)`
                   }   
       }
     }
-
-     
- 
 `
 
 const UpHeader = styled.div`
@@ -118,14 +112,15 @@ const LoginBar = styled.div`
       flex-direction:row;
       align-items:center;
       justify-content:flex-end;
-      margin:0;
+      margin:20px;
       float:right;
       a{    
             font-size:10px;
             text-decoration:none;
       }
       @media(max-width: 720px){ 
-        justify-content:center;
+            justify-content:flex-end;
+            margin-right:20px;
            
     }
     
@@ -172,8 +167,10 @@ const SearchBox =styled.div`
       justify-content:center;
       float:left;
       min-height:20px;
+      margin-left:15px;
       @media(max-width: 720px){ 
         justify-content:center;
+        margin-left:15px;
            
     }
       

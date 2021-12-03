@@ -63,6 +63,12 @@ const RightColumn=styled.div`
 `
 const ImageContainer=styled.div`
       padding: 5px;
+      @media(max-width: 720px){ 
+            padding: 0px;
+      }
+      @media(max-width: 600px){ 
+            padding: 0px;
+      }
 `
 
 const DescriptionContainer = styled.div`
@@ -80,8 +86,21 @@ const LinkName =styled(Link)`
       text-transform: uppercase;
       text-decoration:none;
       color: #000;
+      @media(max-width: 720px){ 
+            font-size:14px; 
+      }
+      @media(max-width: 600px){ 
+            font-size:12px; 
+      }
+      
 `
 const ProductPrice=styled.div`
+      @media(max-width: 720px){ 
+            font-size:14px; 
+      }
+      @media(max-width: 600px){ 
+            font-size:12px; 
+      }
 
 `
 const ProductCuantity=styled.div`
@@ -108,6 +127,12 @@ const SubtotalPrice=styled.div`
       justify-content:flex-end;
       align-items:right;
       font-size:16px;
+      @media(max-width: 720px){ 
+            font-size:14px; 
+      }
+      @media(max-width: 600px){ 
+            font-size:12px; 
+      }
 `
 const ContainerIcon=styled.button`
       height:20px;

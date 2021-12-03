@@ -183,6 +183,16 @@ const ChangeShipping =styled.button`
                   font-weight: 800;
             }   
       }
+      @media(max-width: 600px){ 
+            width:90%;
+            padding: 2px 3px;
+            font-size: 12px;
+            :hover{
+                  :active{
+                        font-size: 12px;  
+                  }   
+            }
+}
 `
 
       
@@ -200,8 +210,8 @@ const ShippingSelect =styled.div`
             text-align:left;
             margin:auto;
             text-transform:uppercase;
-
       }
+      
 `
 const ShippingSelectTwo =styled.div`
       width:100%;
@@ -219,6 +229,11 @@ const ShippingSelectTwo =styled.div`
             text-transform:uppercase;
 
       }
+      @media(max-width: 600px){ 
+            p{
+                  font-size:10px;  
+            }  
+    }
 `
 
 const ZipCodeSelect = () => {
