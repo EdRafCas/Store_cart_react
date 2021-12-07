@@ -42,15 +42,15 @@ const Index = () => {
           <Header/>
           <ContainerPages >
               <Switch>
-              <Route path="/" exact={true} component={App}/>
-              <Route path="/Colection" exact={true} component={Colection}/> 
-              <Route path="/Colection/:category/:nametag" exact={true} component={Product}/> 
-              <Route path="/Contact" exact={true} component={Contact}/> 
-              <Route path="/Info" exact={true} component={Info}/>
-              <Route path="/Cart" exact={true} component={Cart}/> 
-              <Route path="/Colection/:category" exact={true} component={Category}/> 
-              <Route path="/Search/:search" exact={true} component={Search}/>
-              <Route component={Error404}/> 
+                <Route path="/" component={App}/>
+                <Route path="/Colection" exact={true} component={Colection}/> 
+                <Route path="/Colection/:category/:nametag" exact={true} component={Product}/> 
+                <Route path="/Contact" exact={true} component={Contact}/> 
+                <Route path="/Info" exact={true} component={Info}/>
+                <Route path="/Cart" exact={true} component={Cart}/> 
+                <Route path="/Colection/:category" exact={true} component={Category}/> 
+                <Route path="/Search/:search" exact={true} component={Search}/>
+                <Route component={Error404}/> 
               
               
           </Switch>
